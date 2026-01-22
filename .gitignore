@@ -6,6 +6,12 @@ dist/
 # dependencies
 node_modules/
 
+# working folders
+.cache/
+.out/
+.claude/
+.specify/
+
 # logs
 npm-debug.log*
 yarn-debug.log*
