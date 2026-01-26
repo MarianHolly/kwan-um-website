@@ -12,6 +12,7 @@ node_modules/
 .claude/
 .specify/
 .work/
+.notes/
 
 # logs
 npm-debug.log*
