@@ -1,0 +1,117 @@
+---
+// Minimal Sticky Navigation Header
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  style="background: rgba(250, 250, 249, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);"
+>
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo / Site Name -->
+    <a
+      href="#hero"
+      class="text-stone-900 tracking-wide hover:text-stone-700 transition-colors"
+      style="font-weight: 300; font-size: 1.125rem; letter-spacing: 0.05em;"
+    >
+      KWAN UM
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-8">
+      <a
+        href="#practice-info"
+        class="text-stone-700 hover:text-stone-900 transition-colors"
+        style="font-weight: 300; font-size: 0.9375rem;"
+      >
+        Prax
+      </a>
+      <span class="text-stone-300" style="font-weight: 200;">|</span>
+      <a
+        href="#lineage"
+        class="text-stone-700 hover:text-stone-900 transition-colors"
+        style="font-weight: 300; font-size: 0.9375rem;"
+      >
+        O nás
+      </a>
+      <span class="text-stone-300" style="font-weight: 200;">|</span>
+      <a
+        href="#connect"
+        class="text-stone-700 hover:text-stone-900 transition-colors"
+        style="font-weight: 300; font-size: 0.9375rem;"
+      >
+        Kontakt
+      </a>
+    </div>
+
+    <!-- Mobile Navigation - Simple -->
+    <div class="md:hidden flex items-center gap-6 text-sm">
+      <a
+        href="#practice-info"
+        class="text-stone-700"
+        style="font-weight: 300; font-size: 0.875rem;"
+      >
+        Prax
+      </a>
+      <a
+        href="#connect"
+        class="text-stone-700"
+        style="font-weight: 300; font-size: 0.875rem;"
+      >
+        Kontakt
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- Smooth Scroll Script -->
+<script>
+  // Smooth scroll for anchor links
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add subtle shadow on scroll
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 100) {
+        header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+
+      lastScroll = currentScroll;
+    });
+  });
+</script>
+
+<style>
+  /* Ensure smooth scrolling for the whole page */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  /* Add offset for fixed header when scrolling to sections */
+  :global(section) {
+    scroll-margin-top: 80px;
+  }
+</style>
