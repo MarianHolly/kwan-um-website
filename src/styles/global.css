@@ -74,14 +74,16 @@ body {
 
 /* Section Container */
 .section-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   padding: var(--spacing-section-mobile) var(--spacing-6);
 }
 
 @media (min-width: 768px) {
   .section-container {
-    padding: var(--spacing-section-desktop) var(--spacing-12);
+    padding: var(--spacing-section-desktop) var(--spacing-6);
   }
 }
 
