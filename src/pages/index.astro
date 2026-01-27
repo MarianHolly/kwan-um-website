@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
 import Hero from '../components/sections/Hero.astro';
 import WhatIsZen from '../components/sections/WhatIsZen.astro';
 import PracticeInfo from '../components/sections/PracticeInfo.astro';
@@ -10,6 +11,7 @@ import Divider from '../components/ui/Divider.astro';
 ---
 
 <BaseLayout>
+  <Header />
   <main>
     <Hero />
     <Divider variant="circle" />
