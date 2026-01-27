@@ -6,14 +6,19 @@ import PracticeInfo from '../components/sections/PracticeInfo.astro';
 import Lineage from '../components/sections/Lineage.astro';
 import Connect from '../components/sections/Connect.astro';
 import Footer from '../components/layout/Footer.astro';
+import Divider from '../components/ui/Divider.astro';
 ---
 
 <BaseLayout>
   <main>
     <Hero />
+    <Divider variant="circle" />
     <WhatIsZen />
+    <Divider variant="line" />
     <PracticeInfo />
+    <Divider variant="circle" />
     <Lineage />
+    <Divider variant="line" />
     <Connect />
   </main>
   <Footer />
