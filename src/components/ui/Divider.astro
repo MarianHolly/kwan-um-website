@@ -1,0 +1,28 @@
+---
+// Subtle section divider - Zen inspired
+interface Props {
+  variant?: 'line' | 'circle' | 'dots';
+}
+
+const { variant = 'circle' } = Astro.props;
+---
+
+<div class="flex justify-center items-center py-16 md:py-20">
+  {variant === 'line' && (
+    <div class="w-16 h-px bg-stone-200"></div>
+  )}
+
+  {variant === 'circle' && (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1" class="text-stone-200" />
+    </svg>
+  )}
+
+  {variant === 'dots' && (
+    <div class="flex gap-2">
+      <div class="w-1.5 h-1.5 rounded-full bg-stone-200"></div>
+      <div class="w-1.5 h-1.5 rounded-full bg-stone-200"></div>
+      <div class="w-1.5 h-1.5 rounded-full bg-stone-200"></div>
+    </div>
+  )}
+</div>
