@@ -3,53 +3,151 @@ import Section from '../ui/Section.astro';
 ---
 
 <Section id="connect" className="bg-stone-50">
-  <div class="max-w-2xl mx-auto text-center">
-    <h2 class="text-4xl md:text-5xl mb-6 text-stone-900" style="font-weight: 200;">
+  <div class="connect-container" style="max-width: 48rem; margin: 0 auto; text-align: center; padding: 0 2rem;">
+    <h2 class="connect-heading" style="font-size: clamp(2rem, 5vw, 3.75rem); margin-bottom: 2rem; color: #1c1917; font-weight: 200; letter-spacing: -0.02em;">
       Zostaňte informovaní
     </h2>
-    <p class="text-lg md:text-xl text-stone-700 mb-16" style="font-weight: 300;">
+    <p class="connect-description" style="font-size: clamp(1.125rem, 2.5vw, 1.5rem); color: #57534e; margin-bottom: 5rem; line-height: 1.8; font-weight: 300; max-width: 42rem; margin-left: auto; margin-right: auto;">
       Aktuality o praxi a učení - priamo do emailu.
     </p>
 
-    <!-- Newsletter Form - Will be interactive later -->
-    <form class="mb-12">
-      <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+    <!-- Newsletter Form - Shadcn Style -->
+    <form class="newsletter-form" style="margin-bottom: 5rem;">
+      <div class="form-wrapper" style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 32rem; margin: 0 auto; padding: 0 1rem;">
         <input
           type="email"
-          placeholder="Váš email"
-          class="flex-1 px-6 py-3 border border-stone-300 focus:border-stone-900 focus:outline-none"
+          placeholder="váš.email@example.com"
+          class="newsletter-input"
+          style="flex: 1; padding: 1rem 1.25rem; font-size: 1rem; border: 1px solid #d6d3d1; border-radius: 0.5rem; background: white; color: #1c1917; transition: all 0.2s;"
           required
         />
         <button
           type="submit"
-          class="px-8 py-3 bg-stone-900 text-white hover:bg-stone-700 transition-colors"
+          class="newsletter-button"
+          style="padding: 1rem 2rem; background: #1c1917; color: white; border-radius: 0.5rem; font-weight: 500; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: all 0.2s; border: none; cursor: pointer; letter-spacing: 0.01em; white-space: nowrap;"
         >
-          Prihlásiť
+          Odoberať
         </button>
       </div>
+      <p class="form-hint" style="font-size: 0.875rem; color: #78716c; margin-top: 1rem;">
+        Zasielame len dôležité informácie o praxi a podujatiach.
+      </p>
     </form>
 
-    <!-- Social Links -->
-    <div class="flex justify-center gap-8 mb-8">
-      <a href="#" class="text-stone-700 hover:text-stone-900" aria-label="Instagram">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-      </a>
-      <a href="#" class="text-stone-700 hover:text-stone-900" aria-label="Facebook">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-        </svg>
-      </a>
-      <a href="#" class="text-stone-700 hover:text-stone-900" aria-label="YouTube">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-        </svg>
-      </a>
+    <!-- Social Links - Larger & Eye-catching -->
+    <div class="social-links-section" style="margin-bottom: 4rem;">
+      <p style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: #78716c; margin-bottom: 2rem; font-weight: 500;">
+        Sledujte nás
+      </p>
+      <div class="social-icons-wrapper" style="display: flex; justify-content: center; gap: 1.5rem;">
+        <a
+          href="#"
+          class="social-icon-link"
+          style="padding: 1rem; border-radius: 9999px; background: white; border: 1px solid #e7e5e4; color: #44403c; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s;"
+          aria-label="Instagram"
+        >
+          <svg style="width: 1.75rem; height: 1.75rem; transition: transform 0.3s;" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a
+          href="#"
+          class="social-icon-link"
+          style="padding: 1rem; border-radius: 9999px; background: white; border: 1px solid #e7e5e4; color: #44403c; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s;"
+          aria-label="Facebook"
+        >
+          <svg style="width: 1.75rem; height: 1.75rem; transition: transform 0.3s;" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <a
+          href="#"
+          class="social-icon-link"
+          style="padding: 1rem; border-radius: 9999px; background: white; border: 1px solid #e7e5e4; color: #44403c; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s;"
+          aria-label="YouTube"
+        >
+          <svg style="width: 1.75rem; height: 1.75rem; transition: transform 0.3s;" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
-    <p class="text-stone-500">
-      <a href="mailto:info@kwanumzen.sk" class="underline hover:text-stone-900">info@kwanumzen.sk</a>
-    </p>
+    <!-- Email Contact -->
+    <div class="email-section" style="padding: 1.5rem; background: white; border-radius: 0.75rem; border: 1px solid #e7e5e4; display: inline-block; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+      <p style="font-size: 0.875rem; color: #78716c; margin-bottom: 0.5rem; font-weight: 500;">Kontaktný email</p>
+      <a
+        href="mailto:info@kwanumzen.sk"
+        class="email-link"
+        style="font-size: clamp(1.125rem, 2vw, 1.25rem); color: #1c1917; font-weight: 300; text-decoration: underline; text-decoration-color: #d6d3d1; transition: all 0.2s;"
+      >
+        info@kwanumzen.sk
+      </a>
+    </div>
   </div>
 </Section>
+
+<style>
+  /* Input focus state */
+  .newsletter-input:focus {
+    border-color: #1c1917 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(28, 25, 23, 0.1) !important;
+  }
+
+  .newsletter-input::placeholder {
+    color: #a8a29e;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  /* Button hover states */
+  .newsletter-button:hover {
+    background: #292524 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+  }
+
+  .newsletter-button:active {
+    background: #0c0a09 !important;
+  }
+
+  /* Social icon hover effects */
+  .social-icon-link:hover {
+    color: #1c1917 !important;
+    border-color: #1c1917 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    transform: translateY(-2px);
+  }
+
+  .social-icon-link:hover svg {
+    transform: scale(1.1);
+  }
+
+  /* Email card hover */
+  .email-section:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .email-link:hover {
+    color: #44403c !important;
+    text-decoration-color: #1c1917 !important;
+  }
+
+  /* Responsive form layout */
+  @media (min-width: 640px) {
+    .form-wrapper {
+      flex-direction: row !important;
+      padding: 0 !important;
+    }
+
+    .newsletter-button {
+      width: auto !important;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .newsletter-button {
+      width: 100%;
+    }
+  }
+</style>
