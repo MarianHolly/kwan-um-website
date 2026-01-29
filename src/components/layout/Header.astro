@@ -11,33 +11,33 @@
     <!-- Logo / Site Name -->
     <a
       href="#hero"
-      class="flex items-center gap-4 text-stone-900 hover:opacity-80 transition-opacity group"
+      class="logo-container text-stone-900 hover:opacity-80 transition-opacity group"
     >
       <img
         src="/logo.svg"
         alt="Kwan Um Zen Košice logo"
-        class="h-9 lg:h-10 w-auto"
+        class="logo-img"
       />
       <span class="font-light text-lg lg:text-xl tracking-[0.15em] uppercase">Kwan Um</span>
     </a>
 
     <!-- Desktop Navigation -->
-    <div class="hidden md:flex items-center gap-2">
+    <div class="desktop-nav">
       <a
         href="#practice-info"
-        class="nav-link px-5 py-2.5 text-sm lg:text-base font-light text-stone-600 hover:text-stone-900 transition-colors relative"
+        class="nav-link font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         Prax
       </a>
       <a
         href="#lineage"
-        class="nav-link px-5 py-2.5 text-sm lg:text-base font-light text-stone-600 hover:text-stone-900 transition-colors relative"
+        class="nav-link font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         O nás
       </a>
       <a
         href="#connect"
-        class="nav-link px-5 py-2.5 text-sm lg:text-base font-light text-stone-600 hover:text-stone-900 transition-colors relative"
+        class="nav-link font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         Kontakt
       </a>
@@ -66,22 +66,22 @@
     id="mobile-menu"
     class="hidden md:hidden border-t border-stone-200/50 bg-white/95 backdrop-blur-sm"
   >
-    <nav class="px-8 py-6 flex flex-col gap-2">
+    <nav class="mobile-menu-container flex flex-col gap-2">
       <a
         href="#practice-info"
-        class="mobile-nav-link px-5 py-4 text-base font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
+        class="mobile-nav-link font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
       >
         Prax
       </a>
       <a
         href="#lineage"
-        class="mobile-nav-link px-5 py-4 text-base font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
+        class="mobile-nav-link font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
       >
         O nás
       </a>
       <a
         href="#connect"
-        class="mobile-nav-link px-5 py-4 text-base font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
+        class="mobile-nav-link font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
       >
         Kontakt
       </a>
@@ -176,10 +176,15 @@
   .header-spacious {
     padding-left: 0;
     padding-right: 0;
+    width: 100%;
   }
 
   .nav-container {
     padding: 1.75rem 2.5rem;
+    max-width: 80rem; /* 1280px */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
   }
 
   @media (min-width: 768px) {
@@ -197,6 +202,12 @@
   @media (min-width: 1280px) {
     .nav-container {
       padding: 2rem 5rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .nav-container {
+      max-width: 90rem; /* 1440px for very large screens */
     }
   }
 
