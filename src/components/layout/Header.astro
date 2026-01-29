@@ -1,76 +1,119 @@
 ---
-// Minimal Sticky Navigation Header
+// Shadcn-inspired Minimal Header with Zen Aesthetic
 ---
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-  style="background: rgba(250, 250, 249, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent"
+  style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
 >
   <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Logo / Site Name -->
+    <!-- Logo / Site Name with Zen Circle -->
     <a
       href="#hero"
-      class="text-stone-900 tracking-wide hover:text-stone-700 transition-colors"
-      style="font-weight: 300; font-size: 1.125rem; letter-spacing: 0.05em;"
+      class="flex items-center gap-3 text-stone-900 hover:text-stone-700 transition-colors group"
     >
-      KWAN UM
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="opacity-80 group-hover:opacity-100 transition-opacity">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+      </svg>
+      <span class="font-light text-lg tracking-[0.15em] uppercase">Kwan Um</span>
     </a>
 
     <!-- Desktop Navigation -->
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden md:flex items-center gap-1">
       <a
         href="#practice-info"
-        class="text-stone-700 hover:text-stone-900 transition-colors"
-        style="font-weight: 300; font-size: 0.9375rem;"
+        class="nav-link px-4 py-2 text-sm font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         Prax
       </a>
-      <span class="text-stone-300" style="font-weight: 200;">|</span>
       <a
         href="#lineage"
-        class="text-stone-700 hover:text-stone-900 transition-colors"
-        style="font-weight: 300; font-size: 0.9375rem;"
+        class="nav-link px-4 py-2 text-sm font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         O nás
       </a>
-      <span class="text-stone-300" style="font-weight: 200;">|</span>
       <a
         href="#connect"
-        class="text-stone-700 hover:text-stone-900 transition-colors"
-        style="font-weight: 300; font-size: 0.9375rem;"
+        class="nav-link px-4 py-2 text-sm font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         Kontakt
       </a>
     </div>
 
-    <!-- Mobile Navigation - Simple -->
-    <div class="md:hidden flex items-center gap-6 text-sm">
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden p-2 text-stone-600 hover:text-stone-900 transition-colors"
+      aria-label="Toggle menu"
+    >
+      <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <svg id="close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-stone-200/50 bg-white/95 backdrop-blur-sm"
+  >
+    <nav class="px-6 py-4 flex flex-col gap-1">
       <a
         href="#practice-info"
-        class="text-stone-700"
-        style="font-weight: 300; font-size: 0.875rem;"
+        class="mobile-nav-link px-4 py-3 text-sm font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
       >
         Prax
       </a>
       <a
+        href="#lineage"
+        class="mobile-nav-link px-4 py-3 text-sm font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
+      >
+        O nás
+      </a>
+      <a
         href="#connect"
-        class="text-stone-700"
-        style="font-weight: 300; font-size: 0.875rem;"
+        class="mobile-nav-link px-4 py-3 text-sm font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
       >
         Kontakt
       </a>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
 
-<!-- Smooth Scroll Script -->
+<!-- Enhanced Navigation Script -->
 <script>
-  // Smooth scroll for anchor links
   document.addEventListener('DOMContentLoaded', () => {
-    const links = document.querySelectorAll('a[href^="#"]');
+    const header = document.getElementById('header');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const allNavLinks = document.querySelectorAll('a[href^="#"]');
 
-    links.forEach(link => {
+    // Mobile menu toggle
+    mobileMenuButton?.addEventListener('click', () => {
+      const isOpen = !mobileMenu?.classList.contains('hidden');
+
+      if (isOpen) {
+        mobileMenu?.classList.add('hidden');
+        menuIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+      } else {
+        mobileMenu?.classList.remove('hidden');
+        menuIcon?.classList.add('hidden');
+        closeIcon?.classList.remove('hidden');
+      }
+    });
+
+    // Smooth scroll for all anchor links
+    allNavLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href');
@@ -82,21 +125,33 @@
             behavior: 'smooth',
             block: 'start'
           });
+
+          // Close mobile menu after clicking
+          mobileMenu?.classList.add('hidden');
+          menuIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
         }
       });
     });
 
-    // Add subtle shadow on scroll
-    const header = document.getElementById('header');
+    // Add border and shadow on scroll (shadcn style)
     let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
 
-      if (currentScroll > 100) {
-        header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+      if (currentScroll > 50) {
+        header?.classList.remove('border-transparent');
+        header?.classList.add('border-stone-200/60');
+        if (header) {
+          header.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.03)';
+        }
       } else {
-        header.style.boxShadow = 'none';
+        header?.classList.add('border-transparent');
+        header?.classList.remove('border-stone-200/60');
+        if (header) {
+          header.style.boxShadow = 'none';
+        }
       }
 
       lastScroll = currentScroll;
@@ -113,5 +168,42 @@
   /* Add offset for fixed header when scrolling to sections */
   :global(section) {
     scroll-margin-top: 80px;
+  }
+
+  /* Shadcn-inspired nav link hover effect */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 60%;
+  }
+
+  /* Mobile menu slide animation */
+  #mobile-menu {
+    animation: slideDown 0.2s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
