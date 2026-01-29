@@ -4,38 +4,40 @@
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent"
+  class="header-spacious fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent"
   style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
 >
-  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Logo / Site Name with Zen Circle -->
+  <nav class="nav-container max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Logo / Site Name -->
     <a
       href="#hero"
-      class="flex items-center gap-3 text-stone-900 hover:text-stone-700 transition-colors group"
+      class="flex items-center gap-4 text-stone-900 hover:opacity-80 transition-opacity group"
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="opacity-80 group-hover:opacity-100 transition-opacity">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
-      </svg>
-      <span class="font-light text-lg tracking-[0.15em] uppercase">Kwan Um</span>
+      <img
+        src="/logo.svg"
+        alt="Kwan Um Zen Košice logo"
+        class="h-9 lg:h-10 w-auto"
+      />
+      <span class="font-light text-lg lg:text-xl tracking-[0.15em] uppercase">Kwan Um</span>
     </a>
 
     <!-- Desktop Navigation -->
-    <div class="hidden md:flex items-center gap-1">
+    <div class="hidden md:flex items-center gap-2">
       <a
         href="#practice-info"
-        class="nav-link px-4 py-2 text-sm font-light text-stone-600 hover:text-stone-900 transition-colors relative"
+        class="nav-link px-5 py-2.5 text-sm lg:text-base font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         Prax
       </a>
       <a
         href="#lineage"
-        class="nav-link px-4 py-2 text-sm font-light text-stone-600 hover:text-stone-900 transition-colors relative"
+        class="nav-link px-5 py-2.5 text-sm lg:text-base font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         O nás
       </a>
       <a
         href="#connect"
-        class="nav-link px-4 py-2 text-sm font-light text-stone-600 hover:text-stone-900 transition-colors relative"
+        class="nav-link px-5 py-2.5 text-sm lg:text-base font-light text-stone-600 hover:text-stone-900 transition-colors relative"
       >
         Kontakt
       </a>
@@ -44,7 +46,7 @@
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-button"
-      class="md:hidden p-2 text-stone-600 hover:text-stone-900 transition-colors"
+      class="md:hidden p-3 text-stone-600 hover:text-stone-900 transition-colors"
       aria-label="Toggle menu"
     >
       <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -64,22 +66,22 @@
     id="mobile-menu"
     class="hidden md:hidden border-t border-stone-200/50 bg-white/95 backdrop-blur-sm"
   >
-    <nav class="px-6 py-4 flex flex-col gap-1">
+    <nav class="px-8 py-6 flex flex-col gap-2">
       <a
         href="#practice-info"
-        class="mobile-nav-link px-4 py-3 text-sm font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
+        class="mobile-nav-link px-5 py-4 text-base font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
       >
         Prax
       </a>
       <a
         href="#lineage"
-        class="mobile-nav-link px-4 py-3 text-sm font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
+        class="mobile-nav-link px-5 py-4 text-base font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
       >
         O nás
       </a>
       <a
         href="#connect"
-        class="mobile-nav-link px-4 py-3 text-sm font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
+        class="mobile-nav-link px-5 py-4 text-base font-light text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-lg transition-colors"
       >
         Kontakt
       </a>
@@ -167,12 +169,99 @@
 
   /* Add offset for fixed header when scrolling to sections */
   :global(section) {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 100px;
+  }
+
+  /* Spacious Header Layout */
+  .header-spacious {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .nav-container {
+    padding: 1.75rem 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .nav-container {
+      padding: 2rem 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nav-container {
+      padding: 2rem 4rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .nav-container {
+      padding: 2rem 5rem;
+    }
+  }
+
+  /* Logo spacing */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .logo-container {
+      gap: 1.25rem;
+    }
+  }
+
+  .logo-img {
+    height: 2.25rem;
+    width: auto;
+  }
+
+  @media (min-width: 768px) {
+    .logo-img {
+      height: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .logo-img {
+      height: 2.75rem;
+    }
+  }
+
+  /* Nav links spacing */
+  .desktop-nav {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-nav {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .desktop-nav {
+      gap: 1.5rem;
+    }
   }
 
   /* Shadcn-inspired nav link hover effect */
   .nav-link {
     position: relative;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  @media (min-width: 1024px) {
+    .nav-link {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
   }
 
   .nav-link::after {
@@ -189,6 +278,22 @@
 
   .nav-link:hover::after {
     width: 60%;
+  }
+
+  /* Mobile menu spacing */
+  .mobile-menu-container {
+    padding: 1.5rem 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .mobile-menu-container {
+      padding: 2rem 3rem;
+    }
+  }
+
+  .mobile-nav-link {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
   }
 
   /* Mobile menu slide animation */
