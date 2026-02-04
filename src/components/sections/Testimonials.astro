@@ -70,16 +70,6 @@ import Section from '../ui/Section.astro';
         </div>
       </div>
     </div>
-
-    <!-- Bottom CTA -->
-    <div class="testimonials-cta">
-      <p class="cta-text">
-        Pripojte sa k našej komunite
-      </p>
-      <a href="#practice-info" class="cta-button">
-        Začať dnes
-      </a>
-    </div>
   </div>
 </Section>
 
@@ -225,42 +215,6 @@ import Section from '../ui/Section.astro';
     font-weight: var(--font-weight-light);
   }
 
-  /* CTA Section - Smaller */
-  .testimonials-cta {
-    text-align: center;
-    padding: var(--spacing-8) var(--spacing-6);
-    background: var(--color-background-alt);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-  }
-
-  .cta-text {
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-4);
-  }
-
-  .cta-button {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--spacing-3) var(--spacing-6);
-    background: var(--color-primary);
-    color: white;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: all var(--transition-base);
-    letter-spacing: var(--letter-spacing-normal);
-  }
-
-  .cta-button:hover {
-    background: var(--color-primary-light);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-  }
-
   /* Mobile Adjustments */
   @media (max-width: 767px) {
     .testimonials-container {
@@ -285,15 +239,6 @@ import Section from '../ui/Section.astro';
 
     .testimonial-text {
       font-size: var(--font-size-xs);
-    }
-
-    .testimonials-cta {
-      padding: var(--spacing-6) var(--spacing-4);
-    }
-
-    .cta-button {
-      width: 100%;
-      min-height: 44px; /* Touch target */
     }
   }
 
