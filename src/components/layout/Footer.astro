@@ -120,19 +120,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Affiliation Banner -->
-      <div class="affiliation-banner">
-        <div class="affiliation-content">
-          <svg class="affiliation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          <div class="affiliation-text">
-            <span class="affiliation-label">Oficiálny člen</span>
-            <span class="affiliation-org">Kwan Um School of Zen</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -159,13 +146,13 @@
 
 <style>
   .footer {
-    background: #1c1917;
-    color: #d6d3d1;
+    background: var(--color-slate-800);
+    color: var(--color-slate-300);
   }
 
   .footer-main {
-    padding: 4rem 0 2rem;
-    border-bottom: 1px solid #292524;
+    padding: var(--spacing-16) 0 var(--spacing-8);
+    border-bottom: 1px solid var(--color-slate-800);
   }
 
   .footer-container {
@@ -214,62 +201,62 @@
   }
 
   .brand-name {
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: #fafaf9;
-    letter-spacing: 0.05em;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-inverse);
+    letter-spacing: var(--letter-spacing-wider);
   }
 
   .brand-tagline {
-    font-size: 0.9375rem;
-    color: #a8a29e;
-    font-weight: 300;
-    line-height: 1.6;
+    font-size: var(--font-size-sm);
+    color: var(--color-slate-400);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-relaxed);
     max-width: 18rem;
   }
 
   /* Social Links */
   .social-links {
     display: flex;
-    gap: 1rem;
+    gap: var(--spacing-3);
   }
 
   .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 50%;
-    background: #292524;
-    color: #d6d3d1;
-    transition: all 0.3s ease;
+    background: var(--color-slate-800);
+    color: var(--color-slate-300);
+    transition: all var(--transition-base);
   }
 
   .social-link svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.125rem;
+    height: 1.125rem;
   }
 
   .social-link:hover {
-    background: #44403c;
-    color: #fafaf9;
-    transform: translateY(-2px);
+    background: var(--color-slate-700);
+    color: var(--color-text-inverse);
+    transform: translateY(-1px);
   }
 
   /* Footer Columns */
   .footer-column {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: var(--spacing-5);
   }
 
   .column-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #fafaf9;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverse);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: var(--letter-spacing-widest);
   }
 
   .footer-links {
@@ -377,47 +364,6 @@
     transform: translateX(4px);
   }
 
-  /* Affiliation Banner */
-  .affiliation-banner {
-    background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
-    border: 1px solid #44403c;
-    border-radius: 0.75rem;
-    padding: 1.5rem 2rem;
-  }
-
-  .affiliation-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .affiliation-icon {
-    width: 2rem;
-    height: 2rem;
-    color: #78716c;
-    flex-shrink: 0;
-  }
-
-  .affiliation-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .affiliation-label {
-    font-size: 0.75rem;
-    color: #78716c;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-  }
-
-  .affiliation-org {
-    font-size: 1rem;
-    color: #fafaf9;
-    font-weight: 400;
-  }
-
   /* Bottom Bar */
   .footer-bottom {
     padding: 1.5rem 0;
@@ -486,15 +432,6 @@
   @media (max-width: 639px) {
     .footer-main {
       padding: 3rem 0 1.5rem;
-    }
-
-    .affiliation-banner {
-      padding: 1.25rem 1.5rem;
-    }
-
-    .affiliation-content {
-      flex-direction: column;
-      text-align: center;
     }
   }
 </style>
