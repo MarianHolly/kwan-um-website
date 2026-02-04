@@ -55,10 +55,10 @@ const ogImage = new URL(image, Astro.url).href;
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/logo.png" />
 
-    <!-- Fonts - Montserrat from Google Fonts -->
+    <!-- Fonts - Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={siteUrl} />
@@ -66,5 +66,55 @@ const ogImage = new URL(image, Astro.url).href;
 
   <body>
     <slot />
+
+    <!-- Scroll Animation Script -->
+    <script>
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            // Optionally unobserve after animation
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with animate-on-scroll class
+      document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach(el => observer.observe(el));
+      });
+
+      // Smooth scroll behavior for anchor links
+      document.addEventListener('DOMContentLoaded', () => {
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+        anchorLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href === '#' || !href) return;
+
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const headerOffset = 100;
+              const elementPosition = target.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
