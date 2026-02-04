@@ -1,0 +1,505 @@
+---
+import Section from '../ui/Section.astro';
+---
+
+<Section id="faq" className="bg-stone-50">
+  <div class="faq-container">
+    <!-- Section Header -->
+    <div class="faq-header">
+      <h2 class="faq-heading">
+        Časté otázky
+      </h2>
+      <p class="faq-description">
+        Všetko, čo potrebujete vedieť pred prvou návštevou
+      </p>
+    </div>
+
+    <!-- FAQ Grid -->
+    <div class="faq-grid">
+      <!-- FAQ Accordion -->
+      <div class="faq-accordion">
+        <!-- Question 1 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Potrebujem nejaké predchádzajúce skúsenosti s meditáciou?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Nie, vôbec nie. Naša prax je otvorená pre všetkých, bez ohľadu na úroveň skúseností.
+              Pred prvým stretnutím poskytneme základné pokyny o správnom sedení a dýchaní.
+              Mnoho našich členov začínalo úplne od začiatku a práve prvé kroky sú často tie najdôležitejšie.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Koľko to stojí?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Prvá návšteva je vždy zadarmo. Po vyskúšaní praxe fungujeme na princípe dobrovoľného príspevku (dana),
+              ktorý pokrýva náklady na prenájom priestorov a organizáciu podujatí. Odporúčaný mesačný príspevok je
+              10-20€, ale suma je flexibilná podľa vašich možností.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Ako sa mám obliecť a čo si priniesť?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Noste pohodlné, voľné oblečenie, v ktorom sa dá ľahko sedat so skríženými nohami.
+              Odporúčame teplé ponožky, keďže sa obuv necháva pri vchode. Meditačné vankúše a podložky
+              poskytujeme, ale ak máte vlastný vankúš, môžete si ho priniesť.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Čo ak nevládzem sediet 25 minút?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>
+              To je úplne normálne, najmä na začiatku. Ak potrebujete, môžete sa premiestniť alebo zmeniť polohu.
+              Môžete sediet aj na stoličke, nie je nutné sediet v lotosovej pozícii. Dôležité je nájsť polohu,
+              v ktorej dokážete byť pokojní a zároveň ostražití. S praxou sa vaša vytrvalosť prirodzene zlepší.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Musím prísť presne na začiatok?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Pri prvej návšteve prosím príďte aspoň 10 minút pred začiatkom (17:50), aby sme vás mohli
+              privítať a poskytnúť základné pokyny. Pri ďalších návštevách sa snažte prísť včas,
+              ale chápeme, že niekedy to nie je možné. Dvere uzatvárame o 18:15.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Je to náboženská aktivita?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Zenová prax má svoje korene v budhistickej tradícii, ale náš prístup je praktický a otvorený.
+              Nechádzame po vás, aby ste prijali konkrétne presvedčenia. Zameriavame sa na techniku meditácie
+              a priamu skúsenosť. Ľudia rôzneho náboženského presvedčenia (alebo bez neho) praktizujú zen
+              a nachádzajú v ňom hodnotu.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Môžem prísť kedykoľvek alebo sa musím prihlásiť?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Pre prvú návštevu prosím napíšte nám email alebo správu aspoň deň vopred, aby sme vás mohli
+              pripravit a privítať. Pre pravidelných návštevníkov nie je potrebná registrácia -
+              stačí prísť v čas pravidelných stretnutí.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Aké sú prínosy pravidelnej praxe?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Pravidelná zenová meditácia môže priniesť väčšiu jasnosť mysle, schopnosť lepšie zvládať stres,
+              zlepšenú koncentráciu a hlbšie pochopenie vlastných myšlienkových vzorcov. Mnoho praktikujúcich
+              tiež popisuje väčší zmysel pre pokoj a vyrovnanosť v každodennom živote. Prínosy sa zvyčajne
+              prejavujú postupne s pravidelnou praxou.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Card -->
+      <div class="faq-contact-card">
+        <div class="contact-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="contact-card-title">
+          Máte ďalšie otázky?
+        </h3>
+        <p class="contact-card-text">
+          Neváhajte nás kontaktovať. Radi vám odpovieme na všetky vaše otázky.
+        </p>
+        <a href="#connect" class="contact-card-button">
+          Napísať správu
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+
+        <div class="quick-facts">
+          <h4 class="quick-facts-title">Rýchle fakty</h4>
+          <ul class="quick-facts-list">
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Prvá návšteva zadarmo
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Bez registrácie
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Vankúše k dispozícii
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Pokyny pre začiatočníkov
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      question?.addEventListener('click', () => {
+        const isExpanded = question.getAttribute('aria-expanded') === 'true';
+
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          const otherQuestion = otherItem.querySelector('.faq-question');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          if (otherItem !== item) {
+            otherQuestion?.setAttribute('aria-expanded', 'false');
+            otherItem.classList.remove('active');
+            if (otherAnswer) {
+              otherAnswer.style.maxHeight = '0';
+            }
+          }
+        });
+
+        // Toggle current item
+        question.setAttribute('aria-expanded', (!isExpanded).toString());
+        item.classList.toggle('active');
+
+        if (answer) {
+          if (!isExpanded) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          } else {
+            answer.style.maxHeight = '0';
+          }
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .faq-container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Header */
+  .faq-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .faq-heading {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: #1c1917;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .faq-description {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: #57534e;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* Grid Layout */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .faq-grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  /* FAQ Accordion */
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid #e7e5e4;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    border-color: #d6d3d1;
+  }
+
+  .faq-item.active {
+    border-color: #1c1917;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #1c1917;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .faq-question:hover {
+    color: #44403c;
+  }
+
+  .faq-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #78716c;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+    color: #1c1917;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-answer p {
+    padding: 0 2rem 1.5rem 2rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #57534e;
+    font-weight: 300;
+  }
+
+  /* Contact Card */
+  .faq-contact-card {
+    background: white;
+    border: 1px solid #e7e5e4;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    height: fit-content;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .contact-card-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: linear-gradient(135deg, #f5f5f4 0%, #e7e5e4 100%);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: #44403c;
+  }
+
+  .contact-card-icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .contact-card-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #1c1917;
+    margin-bottom: 1rem;
+  }
+
+  .contact-card-text {
+    font-size: 1rem;
+    color: #57534e;
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .contact-card-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: #1c1917;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+  }
+
+  .contact-card-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.3s ease;
+  }
+
+  .contact-card-button:hover {
+    background: #292524;
+    transform: translateY(-2px);
+  }
+
+  .contact-card-button:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Quick Facts */
+  .quick-facts {
+    padding-top: 2rem;
+    border-top: 1px solid #e7e5e4;
+  }
+
+  .quick-facts-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #78716c;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .quick-facts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .quick-facts-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: #44403c;
+    font-weight: 400;
+  }
+
+  .quick-facts-list svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #44403c;
+    flex-shrink: 0;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 1023px) {
+    .faq-contact-card {
+      position: static;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .faq-question {
+      font-size: 1rem;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .faq-answer p {
+      padding: 0 1.5rem 1.25rem 1.5rem;
+      font-size: 0.9375rem;
+    }
+
+    .faq-contact-card {
+      padding: 2rem;
+    }
+  }
+</style>
