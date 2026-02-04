@@ -2,67 +2,621 @@
 import Section from '../ui/Section.astro';
 ---
 
-<Section id="practice-info" className="bg-stone-50">
-  <div class="max-w-5xl mx-auto">
-    <h2 class="text-4xl md:text-5xl mb-20 text-stone-900 text-center" style="font-weight: 200;">
-      Ako začať
-    </h2>
+<Section id="practice-info" className="bg-white">
+  <div class="practice-container">
+    <!-- Section Header -->
+    <div class="practice-header">
+      <h2 class="practice-heading animate-on-scroll fade-in-up">
+        Ako začať s praxou
+      </h2>
+      <p class="practice-description animate-on-scroll fade-in-up stagger-1">
+        Všetko, čo potrebujete vedieť o našich stretnutiach a praxi
+      </p>
+    </div>
 
-    <!-- Two Column Layout on Desktop -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-
-      <!-- Regular Sessions -->
-      <div class="text-center">
-        <h3 class="text-2xl md:text-3xl mb-10 text-stone-900" style="font-weight: 500;">
-          Pravidelné cvičenia
-        </h3>
-        <div class="space-y-6 text-base md:text-lg text-stone-700" style="font-weight: 300;">
-          <div class="space-y-3">
-            <p><strong class="text-stone-900 font-medium">Deň:</strong> Štvrtok</p>
-            <p><strong class="text-stone-900 font-medium">Čas:</strong> 18:00 - 19:30</p>
-            <p><strong class="text-stone-900 font-medium">Adresa:</strong> [Adresa bude doplnená]</p>
-          </div>
-
-          <div class="pt-6">
-            <p class="text-water-dark" style="font-weight: 400;">
-              Prvá návšteva zadarmo<br />
-              Bez predchádzajúcich skúseností
-            </p>
-          </div>
-
-          <div class="pt-4">
-            <a href="#" class="inline-block text-stone-900 underline hover:text-water-dark transition-colors font-medium">
-              Zobraziť na mape →
-            </a>
-          </div>
+    <!-- Main Content Grid -->
+    <div class="practice-main-grid">
+      <!-- Weekly Sessions Card -->
+      <div class="practice-featured-card animate-on-scroll scale-in">
+        <div class="card-image-placeholder">
+          <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <span>Pravidelné cvičenia</span>
         </div>
+
+        <div class="card-content">
+          <h3 class="card-title">Pravidelné cvičenia</h3>
+          <p class="card-intro">
+            Stretávame sa každý štvrtok večer na spoločnú meditáciu a diskusiu.
+          </p>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <div>
+                <div class="info-label">Čas</div>
+                <div class="info-value">Štvrtok 18:00 - 19:30</div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <div>
+                <div class="info-label">Miesto</div>
+                <div class="info-value">[Adresa bude doplnená]</div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <div>
+                <div class="info-label">Pre koho</div>
+                <div class="info-value">Začiatočníci aj pokročilí</div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              <div>
+                <div class="info-label">Prvá návšteva</div>
+                <div class="info-value">Zadarmo</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-benefits">
+            <div class="benefit-badge">Voľný vstup pre začiatočníkov</div>
+            <div class="benefit-badge">Bez registrácie</div>
+          </div>
+
+          <a href="#connect" class="card-cta">
+            Napísať nám
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- What to Expect -->
+      <div class="practice-info-card animate-on-scroll fade-in-up stagger-1">
+        <div class="info-card-header">
+          <svg class="info-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <h3 class="info-card-title">Priebeh stretnutia</h3>
+        </div>
+        <ul class="timeline-list">
+          <li class="timeline-item">
+            <span class="timeline-time">18:00</span>
+            <span class="timeline-desc">Príchod a uvítanie</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-time">18:10</span>
+            <span class="timeline-desc">Úvodné pokyny pre začiatočníkov</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-time">18:20</span>
+            <span class="timeline-desc">Prvá meditácia (25 min)</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-time">18:50</span>
+            <span class="timeline-desc">Krátka prestávka</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-time">19:00</span>
+            <span class="timeline-desc">Druhá meditácia (20 min)</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-time">19:25</span>
+            <span class="timeline-desc">Spoločná čajová diskusia</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- What to Bring -->
+      <div class="practice-info-card animate-on-scroll fade-in-up stagger-2">
+        <div class="info-card-header">
+          <svg class="info-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+          <h3 class="info-card-title">Čo si priniesť</h3>
+        </div>
+        <ul class="checklist">
+          <li class="checklist-item">
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Pohodlné oblečenie
+          </li>
+          <li class="checklist-item">
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Teplé ponožky
+          </li>
+          <li class="checklist-item optional">
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Vlastný meditačný vankúš (voliteľné)
+          </li>
+        </ul>
+        <p class="info-note">
+          Poskytujeme vankúše a podložky na sedenie
+        </p>
       </div>
 
       <!-- Special Events -->
-      <div class="text-center">
-        <h3 class="text-2xl md:text-3xl mb-10 text-stone-900" style="font-weight: 500;">
-          Špeciálne udalosti
-        </h3>
-        <div class="space-y-6 text-base md:text-lg text-stone-700" style="font-weight: 300;">
-          <p style="line-height: 1.8;">
-            Intenzívne praxe (ústrania) sa konajú niekoľkokrát ročne v rôznych európskych krajinách.
-          </p>
-
-          <div class="pt-6">
-            <p class="text-water-dark" style="font-weight: 400;">
-              Pre začiatočníkov aj pokročilých<br />
-              Vedené skúsenými učiteľmi
-            </p>
+      <div class="practice-info-card animate-on-scroll fade-in-up stagger-3">
+        <div class="info-card-header">
+          <svg class="info-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          <h3 class="info-card-title">Špeciálne udalosti</h3>
+        </div>
+        <p class="info-card-text">
+          Intenzívne praxe (ústrania) sa konajú niekoľkokrát ročne v rôznych európskych krajinách. Tieto víkendové alebo týždenné stretnutia sú vhodné pre začiatočníkov aj pokročilých praktikujúcich.
+        </p>
+        <div class="info-highlights">
+          <div class="highlight-item">
+            <span class="highlight-number">2-7</span>
+            <span class="highlight-label">dní praxe</span>
           </div>
-
-          <div class="pt-4">
-            <a href="#" class="inline-block text-stone-900 underline hover:text-water-dark transition-colors font-medium">
-              Pozrieť ústrania Kwan Um Europe →
-            </a>
+          <div class="highlight-item">
+            <span class="highlight-number">4-6×</span>
+            <span class="highlight-label">ročně v Európe</span>
           </div>
         </div>
+        <a href="https://kwanumzen.eu" target="_blank" rel="noopener" class="info-link">
+          Pozrieť ústrania v Európe
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+          </svg>
+        </a>
       </div>
-
     </div>
   </div>
 </Section>
+
+<style>
+  .practice-container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Header */
+  .practice-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .practice-heading {
+    font-family: var(--font-family-display);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-6);
+    letter-spacing: var(--letter-spacing-normal);
+  }
+
+  .practice-description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Main Grid */
+  .practice-main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .practice-main-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  /* Featured Card (spans full width on desktop) */
+  .practice-featured-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  @media (min-width: 768px) {
+    .practice-featured-card {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+    }
+  }
+
+  .practice-featured-card:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card-image-placeholder {
+    background: linear-gradient(135deg, var(--color-slate-100) 0%, var(--color-slate-200) 100%);
+    padding: var(--spacing-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-4);
+    min-height: 16rem;
+    color: var(--color-text-tertiary);
+  }
+
+  .placeholder-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .card-image-placeholder span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .card-content {
+    padding: 2.5rem;
+  }
+
+  .card-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .card-intro {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .info-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .info-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #78716c;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .info-label {
+    font-size: 0.875rem;
+    color: #78716c;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-value {
+    font-size: 1rem;
+    color: #1c1917;
+    font-weight: 400;
+  }
+
+  .card-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .benefit-badge {
+    padding: 0.5rem 1rem;
+    background: #f5f5f4;
+    color: #44403c;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    border: 1px solid #e7e5e4;
+  }
+
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: #1c1917;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .card-cta svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.3s ease;
+  }
+
+  .card-cta:hover {
+    background: #292524;
+    transform: translateY(-2px);
+  }
+
+  .card-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Info Cards */
+  .practice-info-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-10);
+    transition: all var(--transition-base);
+  }
+
+  .practice-info-card:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .info-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .info-card-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+  }
+
+  .info-card-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #1c1917;
+  }
+
+  .info-card-text {
+    font-size: 1rem;
+    color: #57534e;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Timeline */
+  .timeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f5f5f4;
+  }
+
+  .timeline-item:last-child {
+    border-bottom: none;
+  }
+
+  .timeline-time {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #44403c;
+    min-width: 3.5rem;
+    flex-shrink: 0;
+  }
+
+  .timeline-desc {
+    font-size: 1rem;
+    color: #57534e;
+    font-weight: 300;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: #1c1917;
+    font-weight: 400;
+  }
+
+  .checklist-item.optional {
+    color: #78716c;
+  }
+
+  .check-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #44403c;
+    flex-shrink: 0;
+  }
+
+  .info-note {
+    font-size: 0.9375rem;
+    color: #78716c;
+    font-weight: 300;
+    font-style: italic;
+    padding: 1rem;
+    background: #fafaf9;
+    border-radius: 0.5rem;
+  }
+
+  /* Highlights */
+  .info-highlights {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .highlight-number {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1c1917;
+  }
+
+  .highlight-label {
+    font-size: 0.875rem;
+    color: #78716c;
+    font-weight: 300;
+  }
+
+  /* Links */
+  .info-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1c1917;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .info-link svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.3s ease;
+  }
+
+  .info-link:hover {
+    color: #44403c;
+  }
+
+  .info-link:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 767px) {
+    .practice-container {
+      padding: 0 var(--spacing-4);
+    }
+
+    .practice-header {
+      margin-bottom: var(--spacing-12);
+    }
+
+    .practice-main-grid {
+      gap: var(--spacing-6);
+    }
+
+    .card-image-placeholder {
+      min-height: 12rem;
+      padding: var(--spacing-8);
+    }
+
+    .card-content {
+      padding: var(--spacing-6);
+    }
+
+    .practice-info-card {
+      padding: var(--spacing-6);
+    }
+
+    .card-title {
+      font-size: var(--font-size-xl);
+    }
+
+    .card-intro {
+      font-size: var(--font-size-base);
+    }
+
+    .info-grid {
+      gap: var(--spacing-4);
+    }
+
+    .card-cta {
+      width: 100%;
+      justify-content: center;
+      min-height: 48px; /* Touch target */
+    }
+  }
+
+  /* Tablet Adjustments */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .practice-featured-card {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-image-placeholder {
+      min-height: 14rem;
+      width: 100%;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

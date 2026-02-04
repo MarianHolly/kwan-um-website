@@ -3,30 +3,98 @@ import Section from '../ui/Section.astro';
 ---
 
 <Section id="what-is-zen">
-  <div class="max-w-2xl mx-auto text-center">
-    <!-- Direct Answer - Large and Semi-Bold -->
-    <h2 class="text-4xl md:text-5xl lg:text-6xl mb-12 text-stone-900 leading-tight" style="font-weight: 600;">
-      Priama skúsenosť,<br />nie mentálne stavy
+  <div class="zen-content">
+    <!-- Direct Answer - Large and Bold -->
+    <h2 class="zen-heading animate-on-scroll fade-in-up">
+      <span class="zen-heading-bold">Priama skúsenosť</span>,<br />
+      nie mentálne stavy
     </h2>
 
-    <!-- Supporting Text - Smaller Font -->
-    <div class="space-y-8 text-base md:text-lg text-stone-700 text-center" style="font-weight: 300; line-height: 1.8;">
+    <!-- Supporting Text -->
+    <div class="zen-text animate-on-scroll fade-in-up stagger-1">
       <p>
         Zenová prax je forma meditácie, ktorá smeruje k priamej skúsenosti.
-        Nezaoberá sa teóriami ani konceptmi, ale samotným pozorovaním mysle
+        Nezaoberá sa teóriami ani konceptmi, ale <span class="text-bold">samotným pozorovaním mysle</span>
         a skutočnosti takej, aká je.
       </p>
 
       <p>
         Základom je sedenie v tichosti. Cvičíme vrátiť sa k prítomnosti,
         nechať myšlienky plynúť bez zaujatia. Nejde o dosiahnutie špeciálneho
-        stavu, ale o objavenie toho, čo už je.
+        stavu, ale o <span class="text-bold">objavenie toho, čo už je</span>.
       </p>
 
-      <p>
+      <p class="zen-emphasis">
         Pravidelná prax prináša jasnosť vnímania, pokojnejší vzťah k stresu
-        a hlbšie pochopenie vlastnej mysle.
+        a <span class="text-bold">hlbšie pochopenie vlastnej mysle</span>.
       </p>
     </div>
   </div>
 </Section>
+
+<style>
+  .zen-content {
+    max-width: 56rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .zen-heading {
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-normal);
+    margin-bottom: var(--spacing-16);
+  }
+
+  .zen-heading-bold {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .zen-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+  }
+
+  .zen-text p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-loose);
+    letter-spacing: var(--letter-spacing-normal);
+  }
+
+  .text-bold {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .zen-emphasis {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    max-width: 42rem;
+    margin: var(--spacing-4) auto 0;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 767px) {
+    .zen-content {
+      padding: 0 var(--spacing-4);
+    }
+
+    .zen-heading {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      margin-bottom: var(--spacing-12);
+    }
+
+    .zen-text {
+      gap: var(--spacing-4);
+    }
+
+    .zen-text p {
+      font-size: clamp(0.9375rem, 2vw, 1.125rem);
+    }
+  }
+</style>

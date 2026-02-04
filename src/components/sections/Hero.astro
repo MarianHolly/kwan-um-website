@@ -13,24 +13,24 @@
   <div class="hero-content">
     <div class="max-w-5xl mx-auto">
       <!-- Badge/Label -->
-      <div class="hero-badge">
+      <div class="hero-badge animate-on-scroll fade-in-down">
         <span>Kórejský Zen v Košiciach</span>
       </div>
 
       <!-- Main Heading -->
-      <h1 class="hero-heading">
-        Objavte pokoj<br />
-        vo <span class="highlight">vnútornej tichosti</span>
+      <h1 class="hero-heading animate-on-scroll fade-in-up">
+        Objavte <span class="highlight">pokoj</span><br />
+        vo vnútornej tichosti
       </h1>
 
       <!-- Subheading -->
-      <p class="hero-subheading">
+      <p class="hero-subheading animate-on-scroll fade-in-up stagger-1">
         Pravidelná meditačná prax v tradícii Kwan Um School of Zen.<br />
         Bez predchádzajúcej zkúsenosti.
       </p>
 
       <!-- CTA Buttons -->
-      <div class="hero-cta-group">
+      <div class="hero-cta-group animate-on-scroll fade-in-up stagger-2">
         <a href="#practice-info" class="cta-primary">
           <span>Začať cvičiť</span>
           <svg class="cta-icon" viewBox="0 0 20 20" fill="currentColor">
@@ -43,7 +43,7 @@
       </div>
 
       <!-- Trust Indicators -->
-      <div class="hero-trust">
+      <div class="hero-trust animate-on-scroll fade-in-up stagger-3">
         <div class="trust-item">
           <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
@@ -149,72 +149,70 @@
   .hero-heading {
     font-family: var(--font-family-display);
     font-size: clamp(2.5rem, 7vw, 5.5rem);
-    font-weight: var(--font-weight-extralight);
+    font-weight: var(--font-weight-light);
     color: var(--color-text-primary);
     line-height: var(--line-height-tight);
-    letter-spacing: var(--letter-spacing-tight);
+    letter-spacing: var(--letter-spacing-normal);
     margin-bottom: var(--spacing-8);
   }
 
   .hero-heading .highlight {
-    font-weight: var(--font-weight-extrabold);
-    color: var(--color-accent);
-    position: relative;
-    display: inline-block;
+    font-weight: var(--font-weight-bold);
+    font-style: italic;
   }
 
   .hero-subheading {
     font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-    font-weight: 300;
-    color: #57534e;
-    line-height: 1.6;
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
     max-width: 48rem;
-    margin: 0 auto 3rem;
+    margin: 0 auto var(--spacing-12);
   }
 
   /* CTA Buttons */
   .hero-cta-group {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--spacing-4);
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: var(--spacing-16);
   }
 
   @media (min-width: 640px) {
     .hero-cta-group {
       flex-direction: row;
       justify-content: center;
-      gap: 1.5rem;
+      gap: var(--spacing-6);
     }
   }
 
   .cta-primary {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--spacing-3);
     padding: 1.125rem 2.5rem;
-    background: #1c1917;
+    background: var(--color-primary);
     color: white;
-    font-size: 1.125rem;
-    font-weight: 500;
-    border-radius: 0.75rem;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-lg);
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    letter-spacing: 0.01em;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+    letter-spacing: var(--letter-spacing-normal);
   }
 
   .cta-primary:hover {
-    background: #292524;
+    background: var(--color-primary-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-xl);
   }
 
   .cta-icon {
     width: 1.25rem;
     height: 1.25rem;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-base);
   }
 
   .cta-primary:hover .cta-icon {
@@ -226,19 +224,19 @@
     align-items: center;
     padding: 1.125rem 2.5rem;
     background: white;
-    color: #1c1917;
-    font-size: 1.125rem;
-    font-weight: 500;
-    border: 1px solid #d6d3d1;
-    border-radius: 0.75rem;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
     text-decoration: none;
-    transition: all 0.3s ease;
-    letter-spacing: 0.01em;
+    transition: all var(--transition-base);
+    letter-spacing: var(--letter-spacing-normal);
   }
 
   .cta-secondary:hover {
-    background: #f5f5f4;
-    border-color: #a8a29e;
+    background: var(--color-background-alt);
+    border-color: var(--color-border-hover);
     transform: translateY(-2px);
   }
 
@@ -246,10 +244,10 @@
   .hero-trust {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: var(--spacing-6);
     align-items: center;
-    padding-top: 3rem;
-    border-top: 1px solid #e7e5e4;
+    padding-top: var(--spacing-12);
+    border-top: 1px solid var(--color-stone-200);
     max-width: 48rem;
     margin: 0 auto;
   }
@@ -258,23 +256,23 @@
     .hero-trust {
       flex-direction: row;
       justify-content: center;
-      gap: 3rem;
+      gap: var(--spacing-12);
     }
   }
 
   .trust-item {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    color: #78716c;
-    font-size: 0.9375rem;
-    font-weight: 400;
+    gap: var(--spacing-3);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
   }
 
   .trust-icon {
     width: 1.5rem;
     height: 1.5rem;
-    color: #44403c;
+    color: var(--color-text-secondary);
     flex-shrink: 0;
   }
 
@@ -299,9 +297,27 @@
 
   /* Mobile Adjustments */
   @media (max-width: 639px) {
+    .hero-section {
+      min-height: 100svh; /* Use svh for better mobile support */
+      padding: var(--spacing-6) var(--spacing-4);
+    }
+
     .hero-badge {
-      font-size: 0.75rem;
-      padding: 0.4rem 1rem;
+      font-size: var(--font-size-xs);
+      padding: var(--spacing-2) var(--spacing-4);
+    }
+
+    .hero-heading {
+      margin-bottom: var(--spacing-6);
+    }
+
+    .hero-subheading {
+      margin-bottom: var(--spacing-8);
+    }
+
+    .hero-cta-group {
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-12);
     }
 
     .cta-primary,
@@ -309,8 +325,32 @@
       width: 100%;
       max-width: 20rem;
       justify-content: center;
-      font-size: 1rem;
-      padding: 1rem 2rem;
+      font-size: var(--font-size-base);
+      padding: var(--spacing-4) var(--spacing-6);
+      /* Better touch targets */
+      min-height: 48px;
+    }
+
+    .hero-trust {
+      flex-direction: column;
+      gap: var(--spacing-4);
+      padding-top: var(--spacing-8);
+    }
+
+    .trust-item {
+      font-size: var(--font-size-sm);
+    }
+  }
+
+  /* Tablet optimization */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .hero-section {
+      padding: var(--spacing-8) var(--spacing-6);
+    }
+
+    .cta-primary,
+    .cta-secondary {
+      padding: var(--spacing-4) var(--spacing-8);
     }
   }
 </style>
