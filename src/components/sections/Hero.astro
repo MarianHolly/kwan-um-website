@@ -133,30 +133,32 @@
   .hero-badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.5rem 1.25rem;
+    padding: var(--spacing-2) var(--spacing-5);
     background: white;
-    border: 1px solid #e7e5e4;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #78716c;
-    letter-spacing: 0.05em;
+    border: 1px solid var(--color-stone-200);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-tertiary);
+    letter-spacing: var(--letter-spacing-wider);
     text-transform: uppercase;
-    margin-bottom: 2rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing-8);
+    box-shadow: var(--shadow-sm);
   }
 
   .hero-heading {
+    font-family: var(--font-family-display);
     font-size: clamp(2.5rem, 7vw, 5.5rem);
-    font-weight: 300;
-    color: #1c1917;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 2rem;
+    font-weight: var(--font-weight-extralight);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+    margin-bottom: var(--spacing-8);
   }
 
   .hero-heading .highlight {
-    font-weight: 600;
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-accent);
     position: relative;
     display: inline-block;
   }
