@@ -1,0 +1,291 @@
+---
+import Section from '../ui/Section.astro';
+---
+
+<Section id="testimonials" className="bg-stone-50">
+  <div class="testimonials-container">
+    <!-- Section Header -->
+    <div class="testimonials-header">
+      <h2 class="testimonials-heading">
+        Hlasy z komunity
+      </h2>
+      <p class="testimonials-description">
+        Príbehy ľudí, ktorých prax zmenila ich pohľad na život
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="testimonials-grid">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+        </div>
+        <blockquote class="testimonial-text">
+          Po niekoľkých mesiacoch pravidelnej praxe som si všimol, že dokážem pokojnejšie reagovať na stresové situácie. Meditácia mi pomohla nájsť vnútorný pokoj, ktorý som roky hľadal.
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div class="author-info">
+            <div class="author-name">Miroslav</div>
+            <div class="author-meta">Praktizuje 1 rok</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card featured">
+        <div class="quote-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+        </div>
+        <blockquote class="testimonial-text">
+          Komunita je neuveriteľne podporujúca. Každý štvrtok sa teším na spoločné cvičenie. Prax mi dala nielen nástroje na prácu s vlastnou mysľou, ale aj pocit spolupatričnosti.
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">K</div>
+          <div class="author-info">
+            <div class="author-name">Katarína</div>
+            <div class="author-meta">Praktizuje 3 roky</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+        </div>
+        <blockquote class="testimonial-text">
+          Ako začiatočník som mal obavy, či to zvládnem. Ale prístup tu je veľmi priateľský a trpezlivý. Naučil som sa základy a teraz meditácia je súčasť môjho každodenného života.
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div class="author-info">
+            <div class="author-name">Peter</div>
+            <div class="author-meta">Praktizuje 6 mesiacov</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="testimonials-cta">
+      <p class="cta-text">
+        Pripojte sa k našej komunite
+      </p>
+      <a href="#practice-info" class="cta-button">
+        Začať dnes
+      </a>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .testimonials-container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Header */
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .testimonials-heading {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: #1c1917;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .testimonials-description {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: #57534e;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  /* Grid */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Testimonial Cards */
+  .testimonial-card {
+    background: white;
+    border: 1px solid #e7e5e4;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .testimonial-card:hover {
+    border-color: #d6d3d1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .testimonial-card.featured {
+    background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+    border-color: #d6d3d1;
+  }
+
+  @media (min-width: 768px) {
+    .testimonial-card.featured {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonial-card.featured {
+      grid-column: auto;
+    }
+  }
+
+  /* Quote Icon */
+  .quote-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #d6d3d1;
+  }
+
+  .quote-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Testimonial Text */
+  .testimonial-text {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: #44403c;
+    font-weight: 300;
+    font-style: italic;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  /* Author */
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e7e5e4;
+  }
+
+  .author-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #44403c 0%, #78716c 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .author-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1c1917;
+  }
+
+  .author-meta {
+    font-size: 0.875rem;
+    color: #78716c;
+    font-weight: 300;
+  }
+
+  /* CTA Section */
+  .testimonials-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+    border: 1px solid #e7e5e4;
+    border-radius: 1rem;
+  }
+
+  .cta-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #1c1917;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: #1c1917;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.01em;
+  }
+
+  .cta-button:hover {
+    background: #292524;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 767px) {
+    .testimonial-card {
+      padding: 2rem;
+    }
+
+    .testimonials-cta {
+      padding: 2rem 1.5rem;
+    }
+
+    .cta-text {
+      font-size: 1.25rem;
+    }
+  }
+</style>
