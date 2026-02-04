@@ -307,9 +307,13 @@
     font-size: 1rem;
   }
 
-  /* Mobile menu slide animation */
+  /* Mobile menu animations */
   #mobile-menu {
-    animation: slideDown 0.2s ease-out;
+    animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #mobile-menu.closing {
+    animation: slideUp 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @keyframes slideDown {
@@ -320,6 +324,31 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Touch improvements */
+  @media (max-width: 767px) {
+    .mobile-nav-link {
+      min-height: 48px; /* Better touch targets */
+      display: flex;
+      align-items: center;
+    }
+
+    #mobile-menu-button {
+      min-width: 48px;
+      min-height: 48px;
     }
   }
 </style>
