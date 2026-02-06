@@ -3,22 +3,195 @@ import Section from '../ui/Section.astro';
 ---
 
 <Section id="lineage">
-  <div class="max-w-2xl mx-auto text-center">
-    <h2 class="text-4xl md:text-5xl mb-12 text-stone-900" style="font-weight: 200;">
-      Kwan Um School of Zen
-    </h2>
+  <div class="lineage-container">
+    <!-- Section Header -->
+    <div class="lineage-header">
+      <h2 class="lineage-heading animate-on-scroll fade-in-up">
+        Kwan Um škola Zen buddhizmu
+      </h2>
+    </div>
 
-    <p class="text-lg md:text-xl text-stone-700 mb-16" style="font-weight: 300; line-height: 1.8;">
-      Košické centrum je súčasťou Kwan Um School of Zen, medzinárodnej
-      zenovej školy s koreňmi v kórejskom buddhizme. Školu založil
-      Zen Master Seung Sahn a dnes pôsobí v desaťkách krajín na
-      všetkých kontinentoch.
-    </p>
+    <!-- Cards Column Layout -->
+    <div class="lineage-cards">
+      <!-- Card 1: East Asian Buddhism -->
+      <div class="lineage-card animate-on-scroll fade-in-up stagger-1">
+        <div class="card-number">01</div>
+        <h3 class="card-heading">Východoázijský Zen</h3>
+        <div class="card-text">
+          <p>
+            Zen buddhizmus má svoje korene v <span class="text-highlight">Číne</span>, kde vznikol ako Chan
+            v 6. storočí. Odtiaľ sa rozšíril do <span class="text-highlight">Japonska</span> (Zen)
+            a <span class="text-highlight">Kórey</span> (Seon), kde sa stal dominantnou formou buddhizmu.
+          </p>
+          <p>
+            Táto tradícia kladie dôraz na <span class="text-bold">priamu skúsenosť reality</span> namiesto
+            štúdia textov. Základom je meditácia v sede, práca s koánmi a integrácia
+            praxe do každodenného života. Zen sa nezaoberá abstraktnými teóriami,
+            ale priamym pozorovaním vlastnej mysle.
+          </p>
+        </div>
+      </div>
 
-    <div class="flex flex-wrap justify-center gap-6 text-stone-900">
-      <a href="#" class="underline hover:text-water-dark">Kwan Um Europe →</a>
-      <a href="#" class="underline hover:text-water-dark">Kwan Um School →</a>
-      <a href="#" class="underline hover:text-water-dark">Naša línia →</a>
+      <!-- Card 2: Kwan Um School - offset to right -->
+      <div class="lineage-card lineage-card-offset animate-on-scroll fade-in-up stagger-2">
+        <div class="card-number">02</div>
+        <h3 class="card-heading">Kwan Um škola</h3>
+        <div class="card-text">
+          <p>
+            Kwan Um School of Zen je medzinárodná škola kórejského zen buddhizmu,
+            ktorú založil veľmajster Seung Sahn v roku 1983. Škola spája
+            tradičné <span class="text-bold">kórejské metódy</span> s moderným prístupom
+            prístupným pre západných praktikujúcich.
+          </p>
+          <p>
+            Dnes má Kwan Um centrá vo viac ako <span class="text-highlight">30 krajinách</span> sveta.
+            Na Slovensku pôsobíme v Košiciach a Bratislave, s menšími skupinami
+            v Piešťanoch, Liptovskom Mikuláši a Malackách. Organizujeme pravidelné
+            meditácie, ústrania a stretnutia v celej Európe.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </Section>
+
+<style>
+  .lineage-container {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Header */
+  .lineage-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .lineage-heading {
+    font-family: var(--font-family-display);
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-primary);
+    letter-spacing: var(--letter-spacing-normal);
+  }
+
+  /* Cards Column Layout */
+  .lineage-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  .lineage-card {
+    background: var(--color-background-alt);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem 3rem;
+    transition: all var(--transition-base);
+  }
+
+  .lineage-card:hover {
+    background: white;
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+  }
+
+  /* Second card offset to right */
+  .lineage-card-offset {
+    margin-left: 5rem;
+  }
+
+  .card-number {
+    font-family: var(--font-family-display);
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-light);
+    color: var(--color-stone-300);
+    line-height: 1;
+    margin-bottom: var(--spacing-6);
+  }
+
+  .card-heading {
+    font-family: var(--font-family-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-8);
+    line-height: var(--line-height-tight);
+  }
+
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+  }
+
+  .card-text p {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-loose);
+    letter-spacing: var(--letter-spacing-normal);
+  }
+
+  .text-bold {
+    font-weight: var(--font-weight-semibold);
+    color: #1c1917;
+  }
+
+  .text-highlight {
+    font-weight: var(--font-weight-semibold);
+    color: #44403c;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 767px) {
+    .lineage-container {
+      padding: 0 var(--spacing-4);
+    }
+
+    .lineage-header {
+      margin-bottom: 3rem;
+    }
+
+    .lineage-cards {
+      gap: 2.5rem;
+    }
+
+    .lineage-card {
+      padding: 1.75rem 2rem;
+    }
+
+    /* Remove offset on mobile */
+    .lineage-card-offset {
+      margin-left: 0;
+    }
+
+    .card-number {
+      font-size: 2.5rem;
+      margin-bottom: var(--spacing-5);
+    }
+
+    .card-heading {
+      margin-bottom: var(--spacing-6);
+    }
+
+    .card-text {
+      gap: var(--spacing-5);
+    }
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .lineage-card {
+      padding: 2rem 2.5rem;
+    }
+
+    .lineage-card-offset {
+      margin-left: 3rem;
+    }
+
+    .lineage-cards {
+      gap: 3rem;
+    }
+  }
+</style>
