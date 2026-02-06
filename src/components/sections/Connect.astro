@@ -236,7 +236,7 @@ import Section from '../ui/Section.astro';
     border-radius: var(--radius-md);
     background: var(--color-slate-900);
     color: var(--color-text-inverse);
-    transition: all var(--transition-base);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: var(--font-weight-light);
   }
 
@@ -245,6 +245,13 @@ import Section from '../ui/Section.astro';
     border-color: var(--color-slate-500);
     outline: none;
     box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.15);
+    transform: translateY(-1px);
+    background: var(--color-slate-950);
+  }
+
+  .form-input:hover,
+  .form-select:hover {
+    border-color: var(--color-slate-600);
   }
 
   .form-input::placeholder {
@@ -270,17 +277,38 @@ import Section from '../ui/Section.astro';
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-sm);
     cursor: pointer;
-    transition: all var(--transition-base);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     letter-spacing: var(--letter-spacing-normal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .form-button:hover::before {
+    width: 300px;
+    height: 300px;
   }
 
   .form-button:hover {
     background: var(--color-slate-200);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .form-button:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
   }
 
   /* Email Card */
@@ -384,20 +412,28 @@ import Section from '../ui/Section.astro';
 
   .social-link:hover {
     color: var(--color-text-inverse);
-    transform: translateY(-4px);
+    transform: translateY(-6px);
   }
 
   .social-link:hover svg {
-    transform: rotate(-5deg) scale(1.15);
-    filter: drop-shadow(0 4px 12px rgba(148, 163, 184, 0.3));
+    transform: rotate(-8deg) scale(1.2);
+    filter: drop-shadow(0 6px 16px rgba(148, 163, 184, 0.4));
   }
 
   .social-link:nth-child(2):hover svg {
-    transform: rotate(5deg) scale(1.15);
+    transform: rotate(8deg) scale(1.2);
+  }
+
+  .social-link:nth-child(3):hover svg {
+    transform: rotate(-6deg) scale(1.2);
+  }
+
+  .social-link:active {
+    transform: translateY(-2px) scale(0.95);
   }
 
   .social-link:active svg {
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
 
   /* Mobile Responsive */

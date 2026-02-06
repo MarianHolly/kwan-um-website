@@ -5,7 +5,7 @@
 <section id="hero" class="hero-section">
   <!-- Background Elements -->
   <div class="hero-background">
-    <div class="enso-circle"></div>
+    <div class="enso-circle" data-parallax="0.3"></div>
     <div class="texture-overlay"></div>
   </div>
 
@@ -102,6 +102,20 @@
     border-radius: 50%;
     border: 1px solid #e7e5e4;
     opacity: 0.3;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+    animation: breathe 8s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.05);
+      opacity: 0.4;
+    }
   }
 
   .texture-overlay {
@@ -193,15 +207,37 @@
     font-weight: var(--font-weight-medium);
     border-radius: var(--radius-lg);
     text-decoration: none;
-    transition: all var(--transition-base);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-md);
     letter-spacing: var(--letter-spacing-normal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .cta-primary:hover::before {
+    left: 100%;
   }
 
   .cta-primary:hover {
     background: var(--color-primary-light);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-xl);
+  }
+
+  .cta-primary:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: var(--shadow-md);
   }
 
   .cta-icon {
@@ -225,14 +261,20 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     text-decoration: none;
-    transition: all var(--transition-base);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     letter-spacing: var(--letter-spacing-normal);
+    position: relative;
   }
 
   .cta-secondary:hover {
     background: var(--color-background-alt);
     border-color: var(--color-border-hover);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-secondary:active {
+    transform: translateY(-1px) scale(0.98);
   }
 
   /* Trust Indicators */
@@ -278,7 +320,18 @@
     left: 50%;
     transform: translateX(-50%);
     color: #78716c;
-    animation: bounce 2s infinite;
+    animation: bounce 2s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-indicator:hover {
+    color: #44403c;
+    transform: translateX(-50%) scale(1.2);
+  }
+
+  .scroll-indicator:active {
+    transform: translateX(-50%) scale(0.9);
   }
 
   @keyframes bounce {
@@ -286,7 +339,7 @@
       transform: translateX(-50%) translateY(0);
     }
     50% {
-      transform: translateX(-50%) translateY(-10px);
+      transform: translateX(-50%) translateY(-12px);
     }
   }
 

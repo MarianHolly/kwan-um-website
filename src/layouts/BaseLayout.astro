@@ -65,6 +65,12 @@ const ogImage = new URL(image, Astro.url).href;
   </head>
 
   <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
+    <!-- Page Load Overlay -->
+    <div class="page-load-overlay"></div>
+
     <slot />
 
     <!-- Scroll Animation Script -->
@@ -72,7 +78,7 @@ const ogImage = new URL(image, Astro.url).href;
       // Intersection Observer for scroll animations
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -100px 0px'
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -89,6 +95,138 @@ const ogImage = new URL(image, Astro.url).href;
       document.addEventListener('DOMContentLoaded', () => {
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
         animatedElements.forEach(el => observer.observe(el));
+      });
+
+      // Parallax Scroll Effect
+      let ticking = false;
+
+      function updateParallax() {
+        const parallaxElements = document.querySelectorAll('[data-parallax]');
+        const scrollY = window.pageYOffset;
+
+        parallaxElements.forEach(element => {
+          const speed = parseFloat(element.dataset.parallax) || 0.5;
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + scrollY;
+          const elementHeight = rect.height;
+          const viewportHeight = window.innerHeight;
+
+          // Only apply parallax when element is in viewport
+          if (rect.top < viewportHeight && rect.bottom > 0) {
+            const offset = (scrollY - elementTop + viewportHeight / 2) * speed;
+            element.style.transform = `translateY(${offset}px)`;
+          }
+        });
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      });
+
+      // Initialize parallax on load
+      document.addEventListener('DOMContentLoaded', updateParallax);
+
+      // Number Counter Animation
+      function animateCounter(element, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16); // 60fps
+        let current = start;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target + '+';
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(current) + '+';
+          }
+        }, 16);
+      }
+
+      // Observe number counters
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseInt(entry.target.dataset.count);
+            animateCounter(entry.target, target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const counters = document.querySelectorAll('[data-count]');
+        counters.forEach(counter => counterObserver.observe(counter));
+      });
+
+      // Scroll Progress Indicator
+      function updateScrollProgress() {
+        const scrollProgress = document.querySelector('.scroll-progress');
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.pageYOffset;
+        const progress = (scrolled / scrollable) * 100;
+
+        if (scrollProgress) {
+          scrollProgress.style.width = progress + '%';
+        }
+      }
+
+      window.addEventListener('scroll', updateScrollProgress);
+      document.addEventListener('DOMContentLoaded', updateScrollProgress);
+
+      // Page Load Transition
+      window.addEventListener('load', () => {
+        const overlay = document.querySelector('.page-load-overlay');
+        if (overlay) {
+          overlay.classList.add('loaded');
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 600);
+        }
+      });
+
+      // Button Ripple Effect
+      document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('button, .btn, .cta-primary, .cta-secondary');
+
+        buttons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+
+            this.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+          });
+        });
+      });
+
+      // Form Input Focus Animation
+      document.addEventListener('DOMContentLoaded', () => {
+        const inputs = document.querySelectorAll('input, select, textarea');
+
+        inputs.forEach(input => {
+          input.addEventListener('focus', function() {
+            this.parentElement?.classList.add('input-focused');
+          });
+
+          input.addEventListener('blur', function() {
+            this.parentElement?.classList.remove('input-focused');
+          });
+        });
       });
 
       // Smooth scroll behavior for anchor links

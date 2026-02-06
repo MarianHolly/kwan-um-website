@@ -7,13 +7,13 @@ interface Props {
 const { variant = 'circle' } = Astro.props;
 ---
 
-<div class="flex justify-center items-center py-16 md:py-20">
+<div class="flex justify-center items-center py-16 md:py-20 divider-parallax" data-parallax="0.15">
   {variant === 'line' && (
-    <div class="w-16 h-px bg-stone-200"></div>
+    <div class="w-16 h-px bg-stone-200 divider-line"></div>
   )}
 
   {variant === 'circle' && (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="divider-circle-svg">
       <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1" class="text-stone-200" />
     </svg>
   )}
@@ -26,3 +26,40 @@ const { variant = 'circle' } = Astro.props;
     </div>
   )}
 </div>
+
+<style>
+  .divider-parallax {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+  }
+
+  .divider-line {
+    animation: expandLine 1s ease-out;
+  }
+
+  .divider-circle-svg {
+    animation: fadeRotate 1.5s ease-out;
+  }
+
+  @keyframes expandLine {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      width: 4rem;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeRotate {
+    from {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+</style>

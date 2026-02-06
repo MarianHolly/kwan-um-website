@@ -44,7 +44,7 @@ import Section from '../ui/Section.astro';
             prístupným pre západných praktikujúcich.
           </p>
           <p>
-            Dnes má Kwan Um centrá vo viac ako <span class="text-highlight">30 krajinách</span> sveta.
+            Dnes má Kwan Um centrá vo viac ako <span class="text-highlight"><span class="counter" data-count="30">30</span> krajinách</span> sveta.
             Na Slovensku pôsobíme v Košiciach a Bratislave, s menšími skupinami
             v Piešťanoch, Liptovskom Mikuláši a Malackách. Organizujeme pravidelné
             meditácie, ústrania a stretnutia v celej Európe.
@@ -177,6 +177,12 @@ import Section from '../ui/Section.astro';
   .text-highlight {
     font-weight: var(--font-weight-semibold);
     color: #44403c;
+  }
+
+  .counter {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
   }
 
   /* Mobile Responsive */
