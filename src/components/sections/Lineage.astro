@@ -14,7 +14,7 @@ import Section from '../ui/Section.astro';
     <!-- Cards Column Layout -->
     <div class="lineage-cards">
       <!-- Card 1: East Asian Buddhism -->
-      <div class="lineage-card animate-on-scroll fade-in-up stagger-1">
+      <div class="lineage-card lineage-card-left animate-on-scroll fade-in-up stagger-1">
         <div class="card-number">01</div>
         <h3 class="card-heading">Východoázijský Zen</h3>
         <div class="card-text">
@@ -122,10 +122,15 @@ import Section from '../ui/Section.astro';
     opacity: 1;
   }
 
-  /* Second card offset to right - hierarchy visual */
+  /* First card offset to left */
+  .lineage-card-left {
+    margin-right: 5rem;
+    max-width: calc(100% - 5rem);
+  }
+
+  /* Second card offset to right - creates symmetrical hierarchy */
   .lineage-card-offset {
     margin-left: 5rem;
-    /* Keep same width as first card */
     max-width: calc(100% - 5rem);
   }
 
@@ -204,6 +209,11 @@ import Section from '../ui/Section.astro';
     }
 
     /* Remove offset on mobile */
+    .lineage-card-left {
+      margin-right: 0;
+      max-width: 100%;
+    }
+
     .lineage-card-offset {
       margin-left: 0;
       max-width: 100%;
@@ -227,6 +237,11 @@ import Section from '../ui/Section.astro';
   @media (min-width: 768px) and (max-width: 1023px) {
     .lineage-card {
       padding: 2rem 2.5rem;
+    }
+
+    .lineage-card-left {
+      margin-right: 3rem;
+      max-width: calc(100% - 3rem);
     }
 
     .lineage-card-offset {
