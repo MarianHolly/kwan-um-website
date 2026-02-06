@@ -5,7 +5,7 @@ import Section from '../ui/Section.astro';
 <Section id="connect" className="bg-slate-900">
   <div class="connect-container">
     <div class="connect-header">
-      <h2 class="connect-heading animate-on-scroll fade-in-up">
+      <h2 class="connect-heading animate-on-scroll text-reveal">
         Pripojte sa k miestnej skupine
       </h2>
       <p class="connect-subheading animate-on-scroll fade-in-up stagger-1">
@@ -158,13 +158,32 @@ import Section from '../ui/Section.astro';
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition-base);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .connect-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
   }
 
   .connect-card:hover {
     border-color: var(--color-slate-600);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+  }
+
+  .connect-card:hover::before {
+    opacity: 1;
   }
 
   .card-header {

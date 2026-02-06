@@ -6,7 +6,7 @@ import Section from '../ui/Section.astro';
   <div class="lineage-container">
     <!-- Section Header -->
     <div class="lineage-header">
-      <h2 class="lineage-heading animate-on-scroll fade-in-up">
+      <h2 class="lineage-heading animate-on-scroll text-reveal">
         Kwan Um škola Zen buddhizmu
       </h2>
     </div>
@@ -87,18 +87,46 @@ import Section from '../ui/Section.astro';
     background: var(--color-background-alt);
     border-radius: var(--radius-xl);
     padding: 2.5rem 3rem;
-    transition: all var(--transition-base);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .lineage-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .lineage-card > * {
+    position: relative;
+    z-index: 1;
   }
 
   .lineage-card:hover {
     background: white;
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px) perspective(1000px) rotateX(1deg);
   }
 
-  /* Second card offset to right */
+  .lineage-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Second card offset to right - hierarchy visual */
   .lineage-card-offset {
     margin-left: 5rem;
+    /* Keep same width as first card */
+    max-width: calc(100% - 5rem);
   }
 
   .card-number {
@@ -108,6 +136,8 @@ import Section from '../ui/Section.astro';
     color: var(--color-stone-300);
     line-height: 1;
     margin-bottom: var(--spacing-6);
+    position: relative;
+    z-index: 1;
   }
 
   .card-heading {
@@ -117,12 +147,16 @@ import Section from '../ui/Section.astro';
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-8);
     line-height: var(--line-height-tight);
+    position: relative;
+    z-index: 1;
   }
 
   .card-text {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-6);
+    position: relative;
+    z-index: 1;
   }
 
   .card-text p {
@@ -131,6 +165,8 @@ import Section from '../ui/Section.astro';
     color: var(--color-text-primary);
     line-height: var(--line-height-loose);
     letter-spacing: var(--letter-spacing-normal);
+    position: relative;
+    z-index: 1;
   }
 
   .text-bold {
@@ -164,6 +200,7 @@ import Section from '../ui/Section.astro';
     /* Remove offset on mobile */
     .lineage-card-offset {
       margin-left: 0;
+      max-width: 100%;
     }
 
     .card-number {
@@ -188,6 +225,7 @@ import Section from '../ui/Section.astro';
 
     .lineage-card-offset {
       margin-left: 3rem;
+      max-width: calc(100% - 3rem);
     }
 
     .lineage-cards {

@@ -6,7 +6,7 @@ import Section from '../ui/Section.astro';
   <div class="practice-container">
     <!-- Section Header -->
     <div class="practice-header">
-      <h2 class="practice-heading animate-on-scroll fade-in-up">
+      <h2 class="practice-heading animate-on-scroll text-reveal">
         Ako začať s praxou
       </h2>
       <p class="practice-description animate-on-scroll fade-in-up stagger-1">
@@ -144,7 +144,8 @@ import Section from '../ui/Section.astro';
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    transition: all var(--transition-base);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
   }
 
   @media (min-width: 768px) {
@@ -157,7 +158,8 @@ import Section from '../ui/Section.astro';
 
   .practice-featured-card:hover {
     border-color: var(--color-border-hover);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
   }
 
   .card-image-placeholder {
@@ -296,12 +298,32 @@ import Section from '../ui/Section.astro';
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
     padding: var(--spacing-10);
-    transition: all var(--transition-base);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .practice-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.03) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
   }
 
   .practice-info-card:hover {
     border-color: var(--color-border-hover);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .practice-info-card:hover::before {
+    opacity: 1;
   }
 
   .info-card-header {
