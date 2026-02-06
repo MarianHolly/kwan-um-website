@@ -148,10 +148,10 @@
   --spacing-48: 12rem;      /* 192px */
 
   /* Section Spacing */
-  --spacing-section-mobile: 6rem;     /* 96px */
-  --spacing-section-tablet: 8rem;     /* 128px */
-  --spacing-section-desktop: 10rem;   /* 160px */
-  --spacing-section-wide: 12rem;      /* 192px */
+  --spacing-section-mobile: 4rem;     /* 64px */
+  --spacing-section-tablet: 5rem;     /* 80px */
+  --spacing-section-desktop: 6rem;    /* 96px */
+  --spacing-section-wide: 7rem;       /* 112px */
 
   /* ==================== */
   /* DESIGN TOKENS        */
