@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Kwan Um School of Zen Website
 
 This website is a welcoming online home for the Kwan Um School of Zen. Its main goal is to share information about Zen meditation, our lineage, and how you can join our community. Whether you're new to Zen or looking to deepen your practice, you'll find helpful resources here.
