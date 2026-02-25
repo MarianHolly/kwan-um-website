@@ -6,7 +6,7 @@ import Section from '../ui/Section.astro';
   <div class="zen-content">
     <!-- Direct Answer - Large and Bold -->
     <h2 class="zen-heading animate-on-scroll text-reveal">
-      <span class="zen-heading-bold">Priama skúsenosť</span>,<br />
+      <span class="zen-heading-bold">Priama skúsenosť</span>,<span class="heading-break"><br /></span>
       nie mentálne stavy
     </h2>
 
@@ -79,6 +79,16 @@ import Section from '../ui/Section.astro';
   }
 
   /* Mobile Responsive */
+  @media (max-width: 639px) {
+    .heading-break {
+      display: none;
+    }
+
+    .zen-emphasis {
+      max-width: 100%;
+    }
+  }
+
   @media (max-width: 767px) {
     .zen-content {
       padding: 0 var(--spacing-4);

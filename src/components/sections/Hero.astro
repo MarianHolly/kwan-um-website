@@ -21,7 +21,7 @@
       <!-- Subheading -->
       <p class="hero-subheading animate-on-scroll fade-in-up stagger-1">
         Pravidelná meditačná prax v tradícii Kwan Um School of Zen.<br />
-        Bez predchádzajúcej zkúsenosti.
+        <span class="hero-subheading-secondary">Bez predchádzajúcej zkúsenosti.</span>
       </p>
 
       <!-- CTA Buttons -->
@@ -76,7 +76,7 @@
 <style>
   .hero-section {
     position: relative;
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,12 +131,12 @@
     z-index: 1;
     width: 100%;
     max-width: 85rem;
+    margin: 0 auto;
+    padding: 0 5rem;
   }
 
-  @media (min-width: 1440px) {
-    .hero-content {
-      width: auto;
-    }
+  .hero-content > div {
+    max-width: 100%;
   }
 
   .hero-badge {
@@ -346,8 +346,12 @@
   /* Mobile Adjustments */
   @media (max-width: 639px) {
     .hero-section {
-      min-height: 100svh; /* Use svh for better mobile support */
-      padding: var(--spacing-6) var(--spacing-4);
+      min-height: 100dvh;
+      padding: clamp(1.5rem, 8svh, 4rem) var(--spacing-4);
+    }
+
+    .hero-content {
+      padding: 0;
     }
 
     .hero-badge {
@@ -360,29 +364,38 @@
     }
 
     .hero-subheading {
+      font-size: clamp(1rem, 3.5vw, 1.125rem);
       margin-bottom: var(--spacing-8);
     }
 
+    .hero-subheading-secondary {
+      display: none;
+    }
+
     .hero-cta-group {
-      gap: var(--spacing-3);
+      gap: var(--spacing-2);
       margin-bottom: var(--spacing-12);
     }
 
     .cta-primary,
     .cta-secondary {
       width: 100%;
-      max-width: 20rem;
+      max-width: 18rem;
       justify-content: center;
-      font-size: var(--font-size-base);
-      padding: var(--spacing-4) var(--spacing-6);
-      /* Better touch targets */
-      min-height: 48px;
+      font-size: var(--font-size-sm);
+      padding: var(--spacing-3) var(--spacing-5);
+      min-height: 44px;
     }
 
     .hero-trust {
       flex-direction: column;
       gap: var(--spacing-4);
-      padding-top: var(--spacing-8);
+      padding-top: var(--spacing-6);
+    }
+
+    .trust-item:nth-child(1),
+    .trust-item:nth-child(2) {
+      display: none;
     }
 
     .trust-item {

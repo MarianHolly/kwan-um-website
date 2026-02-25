@@ -181,7 +181,7 @@
 
   .nav-container {
     padding: 1rem 2.5rem;
-    max-width: 80rem; /* 1280px */
+    max-width: 85rem; /* 1360px - matches hero-content width */
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -359,6 +359,12 @@
   }
 
   /* Touch improvements */
+  @media (max-width: 639px) {
+    .mobile-menu-container {
+      padding: 1rem 1.5rem;
+    }
+  }
+
   @media (max-width: 767px) {
     .mobile-nav-link {
       min-height: 48px; /* Better touch targets */
