@@ -9,8 +9,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   image: {
-    // Use sharp for image processing (built into Astro)
-    // Automatically converts to WebP, resizes, and lazy-loads
-    experimentalLayout: 'responsive',
+    // Sharp is used automatically — converts to WebP, resizes, lazy-loads
+    // Default output formats for <Image /> and <Picture />
+    formats: ['webp', 'avif'],
   },
 });
