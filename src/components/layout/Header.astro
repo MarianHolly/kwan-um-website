@@ -137,8 +137,6 @@
     });
 
     // Add border and shadow on scroll (shadcn style)
-    let lastScroll = 0;
-
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
 
@@ -156,7 +154,6 @@
         }
       }
 
-      lastScroll = currentScroll;
     });
   });
 </script>
