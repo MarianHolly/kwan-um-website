@@ -1,5 +1,8 @@
 ---
 import Section from '../ui/Section.astro';
+import { actions } from 'astro:actions';
+
+const result = Astro.getActionResult(actions.contact);
 ---
 
 <Section id="connect" className="bg-slate-900">
@@ -14,20 +17,64 @@ import Section from '../ui/Section.astro';
     </div>
 
     <div class="connect-grid">
-      <!-- Email Contact Section -->
-      <div class="connect-card email-card animate-on-scroll scale-in stagger-1">
+      <!-- Contact Form -->
+      <div class="connect-card form-card animate-on-scroll scale-in stagger-1">
         <div class="card-header">
           <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
-          <h3 class="card-title">Email</h3>
+          <h3 class="card-title">Kontaktný formulár</h3>
         </div>
-        <p class="card-description">
-          Máte otázky? Napíšte nám priamo.
-        </p>
-        <a href="mailto:info@kwanumzen.sk" class="email-link">
-          info@kwanumzen.sk
-        </a>
+
+        {result?.error && (
+          <p class="form-feedback form-error">{result.error.message}</p>
+        )}
+        {result?.data?.success && (
+          <p class="form-feedback form-success">
+            Ďakujeme, {result.data.name}! Ozveme sa vám čoskoro.
+          </p>
+        )}
+
+        {!result?.data?.success && (
+          <form method="POST" action={actions.contact} class="contact-form">
+            <div class="form-row">
+              <input
+                type="text"
+                name="name"
+                placeholder="Vaše meno"
+                required
+                minlength="2"
+                class="form-input"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                class="form-input"
+              />
+            </div>
+            <select name="city" required class="form-select">
+              <option value="" disabled selected>Vyberte mesto</option>
+              <option value="Košice">Košice</option>
+              <option value="Bratislava">Bratislava</option>
+              <option value="Piešťany">Piešťany</option>
+              <option value="Liptovský Mikuláš">Liptovský Mikuláš</option>
+              <option value="Malacky">Malacky</option>
+              <option value="Iné">Iné</option>
+            </select>
+            <textarea
+              name="message"
+              placeholder="Správa (voliteľné)"
+              rows="3"
+              maxlength="1000"
+              class="form-input form-textarea"
+            ></textarea>
+            <button type="submit" class="form-button">
+              Odoslať správu
+            </button>
+          </form>
+        )}
       </div>
 
       <!-- WhatsApp Contact Section -->
@@ -311,6 +358,51 @@ import Section from '../ui/Section.astro';
     transform: translateY(0) scale(0.98);
   }
 
+  /* Contact Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+    width: 100%;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .form-feedback {
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .form-success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #86efac;
+  }
+
+  .form-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+  }
+
+  @media (max-width: 480px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* Email Card */
   .email-link {
     display: inline-flex;
@@ -400,40 +492,23 @@ import Section from '../ui/Section.astro';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-slate-400);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--color-slate-500);
+    transition: color 0.25s ease, transform 0.25s ease, filter 0.25s ease;
   }
 
   .social-link svg {
     width: 3rem;
     height: 3rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .social-link:hover {
-    color: var(--color-text-inverse);
-    transform: translateY(-6px);
-  }
-
-  .social-link:hover svg {
-    transform: rotate(-8deg) scale(1.2);
-    filter: drop-shadow(0 6px 16px rgba(148, 163, 184, 0.4));
-  }
-
-  .social-link:nth-child(2):hover svg {
-    transform: rotate(8deg) scale(1.2);
-  }
-
-  .social-link:nth-child(3):hover svg {
-    transform: rotate(-6deg) scale(1.2);
+    color: var(--color-slate-200);
+    transform: translateY(-3px) scale(1.1);
+    filter: drop-shadow(0 4px 10px rgba(148, 163, 184, 0.25));
   }
 
   .social-link:active {
-    transform: translateY(-2px) scale(0.95);
-  }
-
-  .social-link:active svg {
-    transform: scale(0.9);
+    transform: translateY(0) scale(0.95);
   }
 
   /* Mobile Responsive */

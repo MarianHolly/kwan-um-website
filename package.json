@@ -6,25 +6,24 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/mdx": "^5.0.1",
+    "@astrojs/node": "^10.0.2",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.9",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.13",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "tailwindcss": "^4.1.18"
+    "astro": "^6.0.5",
+    "tailwindcss": "^4.1.18",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.8",
     "@eslint/js": "^9.39.2",
     "eslint": "^9.39.2",
-    "eslint-plugin-react": "^7.37.5",
     "globals": "^17.0.0",
     "jiti": "^2.6.1",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.1",
     "vitest": "^4.0.17"
   }

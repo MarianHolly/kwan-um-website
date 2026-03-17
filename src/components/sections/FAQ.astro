@@ -227,7 +227,7 @@ import Section from '../ui/Section.astro';
             otherQuestion?.setAttribute('aria-expanded', 'false');
             otherItem.classList.remove('active');
             if (otherAnswer) {
-              otherAnswer.style.maxHeight = '0';
+              (otherAnswer as HTMLElement).style.maxHeight = '0';
             }
           }
         });
@@ -237,10 +237,11 @@ import Section from '../ui/Section.astro';
         item.classList.toggle('active');
 
         if (answer) {
+          const answerEl = answer as HTMLElement;
           if (!isExpanded) {
-            answer.style.maxHeight = answer.scrollHeight + 'px';
+            answerEl.style.maxHeight = answerEl.scrollHeight + 'px';
           } else {
-            answer.style.maxHeight = '0';
+            answerEl.style.maxHeight = '0';
           }
         }
       });
