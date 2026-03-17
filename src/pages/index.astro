@@ -4,7 +4,6 @@ import Header from '../components/layout/Header.astro';
 import Hero from '../components/sections/Hero.astro';
 import WhatIsZen from '../components/sections/WhatIsZen.astro';
 import PracticeInfo from '../components/sections/PracticeInfo.astro';
-import Testimonials from '../components/sections/Testimonials.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import Lineage from '../components/sections/Lineage.astro';
 import Connect from '../components/sections/Connect.astro';
@@ -13,7 +12,7 @@ import Divider from '../components/ui/Divider.astro';
 ---
 
 <BaseLayout>
-  <Header />
+  <Header transition:persist />
   <main>
     <Hero />
     <Divider variant="line" />
