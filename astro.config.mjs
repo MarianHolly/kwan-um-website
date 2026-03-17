@@ -8,9 +8,4 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  image: {
-    // Sharp is used automatically — converts to WebP, resizes, lazy-loads
-    // Default output formats for <Image /> and <Picture />
-    formats: ['webp', 'avif'],
-  },
 });
