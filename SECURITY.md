@@ -55,32 +55,32 @@
 
 ## Implementation Plan
 
-### Phase 1 — Security ✅ In Progress
+### Phase 1 — Security ✅ Done
 > Patch CVEs, add security headers, protect the contact form.
 
-- [ ] 1.1 Run `pnpm update` to patch known CVEs
-- [ ] 1.2 Create `src/middleware.ts` with security headers (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, HSTS)
-- [ ] 1.3 Add honeypot field to contact form
-- [ ] 1.4 Validate honeypot in action handler
-- [ ] 1.5 Add in-memory rate limiting to action (5 submissions per IP per hour)
-- [ ] 1.6 Add `.trim()` to all string inputs in action schema
+- [x] 1.1 Run `pnpm update` to patch known CVEs
+- [x] 1.2 Create `src/middleware.ts` with security headers (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, HSTS)
+- [x] 1.3 Add honeypot field to contact form
+- [x] 1.4 Validate honeypot in action handler
+- [x] 1.5 Add in-memory rate limiting to action (5 submissions per IP per hour)
+- [x] 1.6 Add `.trim()` to all string inputs in action schema
 
-### Phase 2 — Robustness
+### Phase 2 — Robustness ✅ Done
 > Fix memory leaks and lifecycle bugs.
 
-- [ ] 2.1 Fix `BaseLayout.astro` — clean up all listeners/observers on `astro:before-preparation`
-- [ ] 2.2 Fix `Header.astro` — remove scroll and menu listeners before re-adding
-- [ ] 2.3 Fix counter `setInterval` — store and cancel timer on cleanup
-- [ ] 2.4 Fix `FAQ.astro` — replace `DOMContentLoaded` with `astro:page-load`
-- [ ] 2.5 Guard scroll progress against division by zero
+- [x] 2.1 Fix `BaseLayout.astro` — clean up all listeners/observers on `astro:before-preparation`
+- [x] 2.2 Fix `Header.astro` — remove scroll and menu listeners before re-adding
+- [x] 2.3 Fix counter `setInterval` — store and cancel timer on cleanup
+- [x] 2.4 Fix `FAQ.astro` — replace `DOMContentLoaded` with `astro:page-load`
+- [x] 2.5 Guard scroll progress against division by zero
 
-### Phase 3 — Privacy & Polish
+### Phase 3 — Privacy & Polish ✅ Done (pending real contact data)
 > Self-host fonts, clean up config, fix broken links.
 
-- [ ] 3.1 Self-host Cormorant Garamond + Montserrat (replaces Step 5 of optimization plan)
-- [ ] 3.2 Create `.env.example` with all required environment variables
-- [ ] 3.3 Replace `console.log` of PII with structured non-PII logging
-- [ ] 3.4 Fix social media links (replace `href="#"` with real URLs)
-- [ ] 3.5 Replace WhatsApp placeholder numbers with real contact numbers
-- [ ] 3.6 Strip query params from canonical URL
-- [ ] 3.7 Add missing meta tags (`theme-color`, `color-scheme`, `format-detection`)
+- [x] 3.1 Self-host Cormorant Garamond + Montserrat via `@fontsource` — Google Fonts removed, CSP tightened
+- [x] 3.2 Create `.env.example` with all required environment variables
+- [x] 3.3 Replace `console.log` of PII with structured non-PII logging
+- [ ] 3.4 Fix social media links (replace `href="#"` with real URLs) — **needs real URLs from client**
+- [ ] 3.5 Replace WhatsApp placeholder numbers with real contact numbers — **needs real numbers from client**
+- [x] 3.6 Strip query params from canonical URL
+- [x] 3.7 Add missing meta tags (`theme-color`, `color-scheme`, `format-detection`)
