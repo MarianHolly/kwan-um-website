@@ -94,13 +94,19 @@
 
 <!-- Enhanced Navigation Script -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  let removeHeaderScroll: (() => void) | null = null;
+
+  document.addEventListener('astro:before-preparation', () => {
+    removeHeaderScroll?.();
+    removeHeaderScroll = null;
+  });
+
+  document.addEventListener('astro:page-load', () => {
     const header = document.getElementById('header');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
     const closeIcon = document.getElementById('close-icon');
-    const allNavLinks = document.querySelectorAll('a[href^="#"]');
 
     // Mobile menu toggle
     mobileMenuButton?.addEventListener('click', () => {
@@ -117,47 +123,32 @@
       }
     });
 
-    // Smooth scroll for all anchor links
-    allNavLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        if (!targetId || targetId === '#') return;
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-
-          // Close mobile menu after clicking
-          mobileMenu?.classList.add('hidden');
-          menuIcon?.classList.remove('hidden');
-          closeIcon?.classList.add('hidden');
-        }
+    // Close mobile menu when a nav link is clicked
+    mobileMenu?.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu?.classList.add('hidden');
+        menuIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
       });
     });
 
     // Add border and shadow on scroll (shadcn style)
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       const currentScroll = window.pageYOffset;
 
       if (currentScroll > 50) {
         header?.classList.remove('border-transparent');
         header?.classList.add('border-stone-200/60');
-        if (header) {
-          header.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.03)';
-        }
+        if (header) header.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.03)';
       } else {
         header?.classList.add('border-transparent');
         header?.classList.remove('border-stone-200/60');
-        if (header) {
-          header.style.boxShadow = 'none';
-        }
+        if (header) header.style.boxShadow = 'none';
       }
+    };
 
-    });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    removeHeaderScroll = () => window.removeEventListener('scroll', handleScroll);
   });
 </script>
 
