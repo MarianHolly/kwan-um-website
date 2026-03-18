@@ -15,11 +15,11 @@ const {
   description = 'Zenová meditácia na Slovensku. Súčasť medzinárodnej školy Kwan Um.',
   lang = 'sk',
   image = '/logo.png',
-  url = Astro.url.href
 } = Astro.props;
 
 const fullTitle = title;
-const siteUrl = url;
+// Strip query params to avoid duplicate-content issues
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
 const ogImage = new URL(image, Astro.url).href;
 ---
 
@@ -38,7 +38,7 @@ const ogImage = new URL(image, Astro.url).href;
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -46,7 +46,7 @@ const ogImage = new URL(image, Astro.url).href;
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:url" content={canonicalUrl} />
     <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
@@ -56,13 +56,13 @@ const ogImage = new URL(image, Astro.url).href;
     <link rel="icon" href="/logo-white.svg" />
     <link rel="apple-touch-icon" href="/logo.png" />
 
-    <!-- Fonts - Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Browser / PWA hints -->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href={siteUrl} />
+    <!-- Canonical URL (no query params) -->
+    <link rel="canonical" href={canonicalUrl} />
 
     <ClientRouter />
   </head>
