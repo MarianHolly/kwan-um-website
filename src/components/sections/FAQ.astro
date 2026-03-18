@@ -209,7 +209,7 @@ import Section from '../ui/Section.astro';
 </Section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach(item => {
