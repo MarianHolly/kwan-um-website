@@ -78,29 +78,33 @@ const ogImage = new URL(image, Astro.url).href;
 
     <!-- Scroll Animation Script -->
     <script>
-      // Intersection Observer for scroll animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-      };
-
+      // ── Observers (created once, reused across navigations) ──────────────
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animated');
-            // Optionally unobserve after animation
             observer.unobserve(entry.target);
           }
         });
-      }, observerOptions);
+      }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-      // Observe all elements with animate-on-scroll class
-      document.addEventListener('astro:page-load', () => {
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
-        animatedElements.forEach(el => observer.observe(el));
-      });
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseInt((entry.target as HTMLElement).dataset.count ?? '0');
+            animateCounter(entry.target, target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
 
-      // Parallax Scroll Effect
+      // ── Active timer registry for cleanup ────────────────────────────────
+      const activeTimers = new Set<ReturnType<typeof setInterval>>();
+
+      // ── Scroll cleanup ref ────────────────────────────────────────────────
+      let removeScrollListener: (() => void) | null = null;
+
+      // ── Parallax ─────────────────────────────────────────────────────────
       let ticking = false;
 
       function updateParallax() {
@@ -114,7 +118,6 @@ const ogImage = new URL(image, Astro.url).href;
           const elementTop = rect.top + scrollY;
           const viewportHeight = window.innerHeight;
 
-          // Only apply parallax when element is in viewport
           if (rect.top < viewportHeight && rect.bottom > 0) {
             const offset = (scrollY - elementTop + viewportHeight / 2) * speed;
             element.style.transform = `translateY(${offset}px)`;
@@ -124,66 +127,68 @@ const ogImage = new URL(image, Astro.url).href;
         ticking = false;
       }
 
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
+      // ── Scroll Progress (guards against division by zero) ─────────────────
+      function updateScrollProgress() {
+        const scrollProgress = document.querySelector('.scroll-progress');
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+
+        if (scrollProgress) {
+          const progress = scrollable > 0 ? (window.pageYOffset / scrollable) * 100 : 0;
+          (scrollProgress as HTMLElement).style.width = progress + '%';
         }
-      });
+      }
 
-      // Initialize parallax on load
-      document.addEventListener('astro:page-load', updateParallax);
-
-      // Number Counter Animation
+      // ── Counter Animation ─────────────────────────────────────────────────
       function animateCounter(element: Element, target: number, duration = 2000) {
-        const start = 0;
-        const increment = target / (duration / 16); // 60fps
-        let current = start;
+        const increment = target / (duration / 16);
+        let current = 0;
 
         const timer = setInterval(() => {
           current += increment;
           if (current >= target) {
             element.textContent = target + '+';
             clearInterval(timer);
+            activeTimers.delete(timer);
           } else {
             element.textContent = Math.floor(current) + '+';
           }
         }, 16);
+
+        activeTimers.add(timer);
       }
 
-      // Observe number counters
-      const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const target = parseInt((entry.target as HTMLElement).dataset.count ?? '0');
-            animateCounter(entry.target, target);
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      document.addEventListener('astro:page-load', () => {
-        const counters = document.querySelectorAll('[data-count]');
-        counters.forEach(counter => counterObserver.observe(counter));
+      // ── Cleanup before navigation ─────────────────────────────────────────
+      document.addEventListener('astro:before-preparation', () => {
+        removeScrollListener?.();
+        removeScrollListener = null;
+        activeTimers.forEach(id => clearInterval(id));
+        activeTimers.clear();
       });
 
-      // Scroll Progress Indicator
-      function updateScrollProgress() {
-        const scrollProgress = document.querySelector('.scroll-progress');
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = window.pageYOffset;
-        const progress = (scrolled / scrollable) * 100;
-
-        if (scrollProgress) {
-          (scrollProgress as HTMLElement).style.width = progress + '%';
-        }
-      }
-
-      window.addEventListener('scroll', updateScrollProgress);
-      document.addEventListener('astro:page-load', updateScrollProgress);
-
-      // Page Load Transition
+      // ── Setup on every page load ──────────────────────────────────────────
       document.addEventListener('astro:page-load', () => {
+        // Scroll animations
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Counters
+        document.querySelectorAll('[data-count]').forEach(counter => counterObserver.observe(counter));
+
+        // Initial state
+        updateParallax();
+        updateScrollProgress();
+
+        // Single combined scroll listener
+        const handleScroll = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+          updateScrollProgress();
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        removeScrollListener = () => window.removeEventListener('scroll', handleScroll);
+
+        // Page load overlay
         const overlay = document.querySelector('.page-load-overlay');
         if (overlay) {
           overlay.classList.add('loaded');
@@ -191,13 +196,9 @@ const ogImage = new URL(image, Astro.url).href;
             (overlay as HTMLElement).style.display = 'none';
           }, 600);
         }
-      });
 
-      // Button Ripple Effect
-      document.addEventListener('DOMContentLoaded', () => {
-        const buttons = document.querySelectorAll('button, .btn, .cta-primary, .cta-secondary');
-
-        buttons.forEach(button => {
+        // Button ripple effect
+        document.querySelectorAll('button, .btn, .cta-primary, .cta-secondary').forEach(button => {
           button.addEventListener('click', (e) => {
             const el = e.currentTarget as HTMLElement;
             const me = e as MouseEvent;
@@ -213,32 +214,22 @@ const ogImage = new URL(image, Astro.url).href;
             ripple.classList.add('ripple');
 
             el.appendChild(ripple);
-
             setTimeout(() => ripple.remove(), 600);
           });
         });
-      });
 
-      // Form Input Focus Animation
-      document.addEventListener('DOMContentLoaded', () => {
-        const inputs = document.querySelectorAll('input, select, textarea');
-
-        inputs.forEach(input => {
+        // Form input focus animation
+        document.querySelectorAll('input, select, textarea').forEach(input => {
           input.addEventListener('focus', (e) => {
             (e.currentTarget as HTMLElement).parentElement?.classList.add('input-focused');
           });
-
           input.addEventListener('blur', (e) => {
             (e.currentTarget as HTMLElement).parentElement?.classList.remove('input-focused');
           });
         });
-      });
 
-      // Smooth scroll behavior for anchor links
-      document.addEventListener('DOMContentLoaded', () => {
-        const anchorLinks = document.querySelectorAll('a[href^="#"]');
-
-        anchorLinks.forEach(link => {
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
           link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             if (href === '#' || !href) return;
@@ -246,14 +237,10 @@ const ogImage = new URL(image, Astro.url).href;
             const target = document.querySelector(href);
             if (target) {
               e.preventDefault();
-              const headerOffset = 100;
               const elementPosition = target.getBoundingClientRect().top;
-              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              const offsetPosition = elementPosition + window.pageYOffset - 100;
 
-              window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-              });
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
           });
         });
