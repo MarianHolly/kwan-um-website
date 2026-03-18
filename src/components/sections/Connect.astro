@@ -37,6 +37,8 @@ const result = Astro.getActionResult(actions.contact);
 
         {!result?.data?.success && (
           <form method="POST" action={actions.contact} class="contact-form">
+            {/* Honeypot — hidden from real users, bots fill it in */}
+            <input type="url" name="website" class="honeypot" tabindex="-1" autocomplete="off" />
             <div class="form-row">
               <input
                 type="text"
@@ -364,6 +366,16 @@ const result = Astro.getActionResult(actions.contact);
     flex-direction: column;
     gap: var(--spacing-3);
     width: 100%;
+  }
+
+  /* Honeypot — positioned off-screen, not display:none (bots ignore display:none) */
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .form-row {
