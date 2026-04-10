@@ -1,5 +1,6 @@
 import { defineAction, ActionError } from 'astro:actions';
 import { z } from 'zod';
+import { Resend } from 'resend';
 
 const cities = ['Košice', 'Bratislava', 'Piešťany', 'Liptovský Mikuláš', 'Malacky', 'Iné'] as const;
 
@@ -50,17 +51,33 @@ export const server = {
         });
       }
 
-      // TODO: connect your email service here (e.g. Resend, SendGrid, Nodemailer)
-      // Example with Resend:
-      // const resend = new Resend(import.meta.env.RESEND_API_KEY);
-      // await resend.emails.send({
-      //   from: 'web@kwanumzen.sk',
-      //   to: import.meta.env.EMAIL_TO,
-      //   subject: `Nový záujemca: ${name} — ${city}`,
-      //   text: `Meno: ${name}\nEmail: ${email}\nMesto: ${city}\nSpráva: ${message ?? '—'}`,
-      // });
+      // Send email via Resend (configure RESEND_API_KEY and EMAIL_TO in .env)
+      const apiKey = import.meta.env.RESEND_API_KEY;
+      const emailTo = import.meta.env.EMAIL_TO;
 
-      // Log submission without PII
+      if (apiKey && emailTo) {
+        const resend = new Resend(apiKey);
+        const { error } = await resend.emails.send({
+          from: 'Kwan Um Zen <web@kwanumzen.sk>',
+          to: emailTo,
+          replyTo: email,
+          subject: `Nový záujemca: ${name} — ${city}`,
+          text: [
+            `Meno: ${name}`,
+            `Email: ${email}`,
+            `Mesto: ${city}`,
+            `Správa: ${message ?? '—'}`,
+          ].join('\n'),
+        });
+
+        if (error) {
+          console.error(`[contact] email send failed: ${error.message}`);
+          throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: 'Odoslanie zlyhalo. Skúste to znovu.' });
+        }
+      } else {
+        console.warn('[contact] RESEND_API_KEY or EMAIL_TO not set — email not sent');
+      }
+
       console.log(`[contact] submission from ${city} — ${new Date().toISOString()}`);
 
       return { success: true, name };
