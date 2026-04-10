@@ -209,43 +209,54 @@ import Section from '../ui/Section.astro';
 </Section>
 
 <script>
+  let removeFaqListeners: (() => void) | null = null;
+
+  document.addEventListener('astro:before-preparation', () => {
+    removeFaqListeners?.();
+    removeFaqListeners = null;
+  });
+
   document.addEventListener('astro:page-load', () => {
     const faqItems = document.querySelectorAll('.faq-item');
+    const handlers: Array<{ question: Element; handler: () => void }> = [];
 
     faqItems.forEach(item => {
       const question = item.querySelector('.faq-question');
       const answer = item.querySelector('.faq-answer');
 
-      question?.addEventListener('click', () => {
-        const isExpanded = question.getAttribute('aria-expanded') === 'true';
+      const handler = () => {
+        const isExpanded = question!.getAttribute('aria-expanded') === 'true';
 
         // Close all other items
         faqItems.forEach(otherItem => {
-          const otherQuestion = otherItem.querySelector('.faq-question');
-          const otherAnswer = otherItem.querySelector('.faq-answer');
           if (otherItem !== item) {
+            const otherQuestion = otherItem.querySelector('.faq-question');
+            const otherAnswer = otherItem.querySelector('.faq-answer') as HTMLElement | null;
             otherQuestion?.setAttribute('aria-expanded', 'false');
             otherItem.classList.remove('active');
-            if (otherAnswer) {
-              (otherAnswer as HTMLElement).style.maxHeight = '0';
-            }
+            if (otherAnswer) otherAnswer.style.maxHeight = '0';
           }
         });
 
         // Toggle current item
-        question.setAttribute('aria-expanded', (!isExpanded).toString());
+        question!.setAttribute('aria-expanded', (!isExpanded).toString());
         item.classList.toggle('active');
 
         if (answer) {
           const answerEl = answer as HTMLElement;
-          if (!isExpanded) {
-            answerEl.style.maxHeight = answerEl.scrollHeight + 'px';
-          } else {
-            answerEl.style.maxHeight = '0';
-          }
+          answerEl.style.maxHeight = isExpanded ? '0' : answerEl.scrollHeight + 'px';
         }
-      });
+      };
+
+      if (question) {
+        question.addEventListener('click', handler);
+        handlers.push({ question, handler });
+      }
     });
+
+    removeFaqListeners = () => {
+      handlers.forEach(({ question, handler }) => question.removeEventListener('click', handler));
+    };
   });
 </script>
 
