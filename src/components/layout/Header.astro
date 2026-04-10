@@ -95,10 +95,13 @@
 <!-- Enhanced Navigation Script -->
 <script>
   let removeHeaderScroll: (() => void) | null = null;
+  let removeHeaderMenuListeners: (() => void) | null = null;
 
   document.addEventListener('astro:before-preparation', () => {
     removeHeaderScroll?.();
     removeHeaderScroll = null;
+    removeHeaderMenuListeners?.();
+    removeHeaderMenuListeners = null;
   });
 
   document.addEventListener('astro:page-load', () => {
@@ -109,9 +112,8 @@
     const closeIcon = document.getElementById('close-icon');
 
     // Mobile menu toggle
-    mobileMenuButton?.addEventListener('click', () => {
+    const handleMenuToggle = () => {
       const isOpen = !mobileMenu?.classList.contains('hidden');
-
       if (isOpen) {
         mobileMenu?.classList.add('hidden');
         menuIcon?.classList.remove('hidden');
@@ -121,16 +123,22 @@
         menuIcon?.classList.add('hidden');
         closeIcon?.classList.remove('hidden');
       }
-    });
+    };
+    mobileMenuButton?.addEventListener('click', handleMenuToggle);
 
     // Close mobile menu when a nav link is clicked
-    mobileMenu?.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu?.classList.add('hidden');
-        menuIcon?.classList.remove('hidden');
-        closeIcon?.classList.add('hidden');
-      });
-    });
+    const handleNavLinkClick = () => {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    };
+    const navLinks = Array.from(mobileMenu?.querySelectorAll('a[href^="#"]') ?? []);
+    navLinks.forEach(link => link.addEventListener('click', handleNavLinkClick));
+
+    removeHeaderMenuListeners = () => {
+      mobileMenuButton?.removeEventListener('click', handleMenuToggle);
+      navLinks.forEach(link => link.removeEventListener('click', handleNavLinkClick));
+    };
 
     // Add border and shadow on scroll (shadcn style)
     const handleScroll = () => {
