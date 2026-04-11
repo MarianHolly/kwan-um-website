@@ -64,6 +64,94 @@ const ogImage = new URL(image, Astro.url).href;
     <!-- Canonical URL (no query params) -->
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Structured Data — Organization + FAQPage -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Kwan Um Zen",
+        "url": "https://kwanumzen.sk",
+        "logo": "https://kwanumzen.sk/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "info@kwanumzen.sk",
+          "availableLanguage": ["Slovak", "Czech", "English"]
+        },
+        "sameAs": []
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Potrebujem nejaké predchádzajúce skúsenosti s meditáciou?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nie, vôbec nie. Naša prax je otvorená pre všetkých, bez ohľadu na úroveň skúseností. Pred prvým stretnutím poskytneme základné pokyny o správnom sedení a dýchaní."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Koľko to stojí?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Prvá návšteva je vždy zadarmo. Po vyskúšaní praxe fungujeme na princípe dobrovoľného príspevku (dana). Odporúčaný mesačný príspevok je 10–20 €, ale suma je flexibilná podľa vašich možností."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ako sa mám obliecť a čo si priniesť?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Noste pohodlné, voľné oblečenie, v ktorom sa dá ľahko sedať so skríženými nohami. Odporúčame teplé ponožky, keďže sa obuv necháva pri vchode. Meditačné vankúše a podložky poskytujeme."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Čo ak nevládzem sedieť 25 minút?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To je úplne normálne, najmä na začiatku. Môžete sedieť aj na stoličke, nie je nutné sedieť v lotosovej pozícii. S praxou sa vaša vytrvalosť prirodzene zlepší."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Musím prísť presne na začiatok?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pri prvej návšteve prosím príďte aspoň 10 minút pred začiatkom (17:50), aby sme vás mohli privítať a poskytnúť základné pokyny. Dvere uzatvárame o 18:15."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Je to náboženská aktivita?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Zenová prax má svoje korene v budhistickej tradícii, ale náš prístup je praktický a otvorený. Zameriavame sa na techniku meditácie a priamu skúsenosť. Ľudia rôzneho náboženského presvedčenia praktizujú zen a nachádzajú v ňom hodnotu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Môžem prísť kedykoľvek alebo sa musím prihlásiť?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pre prvú návštevu prosím napíšte nám email alebo správu aspoň deň vopred. Pre pravidelných návštevníkov nie je potrebná registrácia — stačí prísť v čas pravidelných stretnutí."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Aké sú prínosy pravidelnej praxe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pravidelná zenová meditácia môže priniesť väčšiu jasnosť mysle, schopnosť lepšie zvládať stres, zlepšenú koncentráciu a hlbšie pochopenie vlastných myšlienkových vzorcov."
+            }
+          }
+        ]
+      }
+    ])} />
+
     <ClientRouter />
   </head>
 
