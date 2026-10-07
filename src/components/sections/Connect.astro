@@ -38,38 +38,53 @@ const result = Astro.getActionResult(actions.contact);
         {!result?.data?.success && (
           <form method="POST" action={actions.contact} class="contact-form">
             <div class="form-row">
-              <input
-                type="text"
-                name="name"
-                placeholder="Vaše meno"
-                required
-                minlength="2"
-                class="form-input"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-                class="form-input"
-              />
+              <div class="form-field">
+                <label for="contact-name" class="sr-only">Vaše meno</label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  name="name"
+                  placeholder="Vaše meno"
+                  required
+                  minlength="2"
+                  class="form-input"
+                />
+              </div>
+              <div class="form-field">
+                <label for="contact-email" class="sr-only">Email</label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  class="form-input"
+                />
+              </div>
             </div>
-            <select name="city" required class="form-select">
-              <option value="" disabled selected>Vyberte mesto</option>
-              <option value="Košice">Košice</option>
-              <option value="Bratislava">Bratislava</option>
-              <option value="Piešťany">Piešťany</option>
-              <option value="Liptovský Mikuláš">Liptovský Mikuláš</option>
-              <option value="Malacky">Malacky</option>
-              <option value="Iné">Iné</option>
-            </select>
-            <textarea
-              name="message"
-              placeholder="Správa (voliteľné)"
-              rows="3"
-              maxlength="1000"
-              class="form-input form-textarea"
-            ></textarea>
+            <div class="form-field">
+              <label for="contact-city" class="sr-only">Mesto</label>
+              <select id="contact-city" name="city" required class="form-select">
+                <option value="" disabled selected>Vyberte mesto</option>
+                <option value="Košice">Košice</option>
+                <option value="Bratislava">Bratislava</option>
+                <option value="Piešťany">Piešťany</option>
+                <option value="Liptovský Mikuláš">Liptovský Mikuláš</option>
+                <option value="Malacky">Malacky</option>
+                <option value="Iné">Iné</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="contact-message" class="sr-only">Správa (voliteľné)</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="Správa (voliteľné)"
+                rows="3"
+                maxlength="1000"
+                class="form-input form-textarea"
+              ></textarea>
+            </div>
             <button type="submit" class="form-button">
               Odoslať správu
             </button>
@@ -370,6 +385,10 @@ const result = Astro.getActionResult(actions.contact);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-3);
+  }
+
+  .form-field {
+    display: contents;
   }
 
   .form-textarea {
