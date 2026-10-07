@@ -50,7 +50,7 @@ import Section from '../ui/Section.astro';
               </svg>
               <div>
                 <div class="info-label">Miesto</div>
-                <div class="info-value">[Adresa bude doplnená]</div>
+                <div class="info-value info-value-pending">Adresu upresníme po napísaní správy</div>
               </div>
             </div>
 
@@ -244,6 +244,12 @@ import Section from '../ui/Section.astro';
     font-size: 1rem;
     color: #1c1917;
     font-weight: 400;
+  }
+
+  .info-value-pending {
+    color: #78716c;
+    font-style: italic;
+    font-weight: 300;
   }
 
   .card-benefits {
