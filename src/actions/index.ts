@@ -1,17 +1,10 @@
 import { defineAction } from 'astro:actions';
-import { z } from 'zod';
-
-const cities = ['Košice', 'Bratislava', 'Piešťany', 'Liptovský Mikuláš', 'Malacky', 'Iné'] as const;
+import { contactSchema } from './contact-schema';
 
 export const server = {
   contact: defineAction({
     accept: 'form',
-    input: z.object({
-      name: z.string().min(2, 'Meno musí mať aspoň 2 znaky'),
-      email: z.email('Neplatná emailová adresa'),
-      city: z.enum(cities),
-      message: z.string().max(1000).optional(),
-    }),
+    input: contactSchema,
     handler: async ({ name, email, city, message }) => {
       // TODO: connect your email service here (e.g. Resend, SendGrid, Nodemailer)
       // Example with Resend:
