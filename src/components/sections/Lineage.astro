@@ -44,7 +44,7 @@ import Section from '../ui/Section.astro';
             prístupným pre západných praktikujúcich.
           </p>
           <p>
-            Dnes má Kwan Um centrá vo viac ako <span class="text-highlight"><span class="counter" data-count="30">30</span> krajinách</span> sveta.
+            Dnes má Kwan Um centrá vo viac ako <span class="text-highlight">30 krajinách</span> sveta.
             Na Slovensku pôsobíme v Košiciach a Bratislave, s menšími skupinami
             v Piešťanoch, Liptovskom Mikuláši a Malackách. Organizujeme pravidelné
             meditácie, ústrania a stretnutia v celej Európe.
@@ -90,7 +90,6 @@ import Section from '../ui/Section.astro';
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
-    transform-style: preserve-3d;
   }
 
   .lineage-card::before {
@@ -115,7 +114,7 @@ import Section from '../ui/Section.astro';
   .lineage-card:hover {
     background: white;
     box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-6px) perspective(1000px) rotateX(1deg);
+    transform: translateY(-6px);
   }
 
   .lineage-card:hover::before {
@@ -182,12 +181,6 @@ import Section from '../ui/Section.astro';
   .text-highlight {
     font-weight: var(--font-weight-semibold);
     color: #44403c;
-  }
-
-  .counter {
-    display: inline-block;
-    font-variant-numeric: tabular-nums;
-    min-width: 2ch;
   }
 
   /* Mobile Responsive */

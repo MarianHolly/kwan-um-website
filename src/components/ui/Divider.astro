@@ -7,7 +7,7 @@ interface Props {
 const { variant = 'circle' } = Astro.props;
 ---
 
-<div class="flex justify-center items-center py-16 md:py-20 divider-parallax" data-parallax="0.15">
+<div class="flex justify-center items-center py-16 md:py-20">
   {variant === 'line' && (
     <div class="w-16 h-px bg-stone-200 divider-line"></div>
   )}
@@ -28,11 +28,6 @@ const { variant = 'circle' } = Astro.props;
 </div>
 
 <style>
-  .divider-parallax {
-    will-change: transform;
-    transition: transform 0.1s ease-out;
-  }
-
   .divider-line {
     animation: expandLine 1s ease-out;
   }

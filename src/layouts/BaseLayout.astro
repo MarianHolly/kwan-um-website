@@ -70,12 +70,6 @@ const ogImage = new URL(image, Astro.url).href;
   <body>
     <a href="#main-content" class="skip-to-main">Preskočiť na obsah</a>
 
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress"></div>
-
-    <!-- Page Load Overlay -->
-    <div class="page-load-overlay"></div>
-
     <slot />
 
     <!-- Scroll Animation Script -->
@@ -100,125 +94,6 @@ const ogImage = new URL(image, Astro.url).href;
       document.addEventListener('astro:page-load', () => {
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
         animatedElements.forEach(el => observer.observe(el));
-      });
-
-      // Parallax Scroll Effect
-      let ticking = false;
-
-      function updateParallax() {
-        const parallaxElements = document.querySelectorAll('[data-parallax]');
-        const scrollY = window.pageYOffset;
-
-        parallaxElements.forEach(el => {
-          const element = el as HTMLElement;
-          const speed = parseFloat(element.dataset.parallax ?? '0.5') || 0.5;
-          const rect = element.getBoundingClientRect();
-          const elementTop = rect.top + scrollY;
-          const viewportHeight = window.innerHeight;
-
-          // Only apply parallax when element is in viewport
-          if (rect.top < viewportHeight && rect.bottom > 0) {
-            const offset = (scrollY - elementTop + viewportHeight / 2) * speed;
-            element.style.transform = `translateY(${offset}px)`;
-          }
-        });
-
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      });
-
-      // Initialize parallax on load
-      document.addEventListener('astro:page-load', updateParallax);
-
-      // Number Counter Animation
-      function animateCounter(element: Element, target: number, duration = 2000) {
-        const start = 0;
-        const increment = target / (duration / 16); // 60fps
-        let current = start;
-
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            element.textContent = target + '+';
-            clearInterval(timer);
-          } else {
-            element.textContent = Math.floor(current) + '+';
-          }
-        }, 16);
-      }
-
-      // Observe number counters
-      const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const target = parseInt((entry.target as HTMLElement).dataset.count ?? '0');
-            animateCounter(entry.target, target);
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      document.addEventListener('astro:page-load', () => {
-        const counters = document.querySelectorAll('[data-count]');
-        counters.forEach(counter => counterObserver.observe(counter));
-      });
-
-      // Scroll Progress Indicator
-      function updateScrollProgress() {
-        const scrollProgress = document.querySelector('.scroll-progress');
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = window.pageYOffset;
-        const progress = (scrolled / scrollable) * 100;
-
-        if (scrollProgress) {
-          (scrollProgress as HTMLElement).style.width = progress + '%';
-        }
-      }
-
-      window.addEventListener('scroll', updateScrollProgress);
-      document.addEventListener('astro:page-load', updateScrollProgress);
-
-      // Page Load Transition
-      document.addEventListener('astro:page-load', () => {
-        const overlay = document.querySelector('.page-load-overlay');
-        if (overlay) {
-          overlay.classList.add('loaded');
-          setTimeout(() => {
-            (overlay as HTMLElement).style.display = 'none';
-          }, 600);
-        }
-      });
-
-      // Button Ripple Effect
-      document.addEventListener('DOMContentLoaded', () => {
-        const buttons = document.querySelectorAll('button, .btn, .cta-primary, .cta-secondary');
-
-        buttons.forEach(button => {
-          button.addEventListener('click', (e) => {
-            const el = e.currentTarget as HTMLElement;
-            const me = e as MouseEvent;
-            const ripple = document.createElement('span');
-            const rect = el.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = me.clientX - rect.left - size / 2;
-            const y = me.clientY - rect.top - size / 2;
-
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-
-            el.appendChild(ripple);
-
-            setTimeout(() => ripple.remove(), 600);
-          });
-        });
       });
 
       // Form Input Focus Animation
