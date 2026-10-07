@@ -1,6 +1,8 @@
 ---
 // Footer Component
 import SocialLinks from '../ui/SocialLinks.astro';
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
@@ -106,7 +108,7 @@ import SocialLinks from '../ui/SocialLinks.astro';
     <div class="footer-container">
       <div class="bottom-content">
         <div class="copyright">
-          © 2025 Kwan Um Zen Slovensko. Všetky práva vyhradené.
+          © {currentYear} Kwan Um Zen Slovensko. Všetky práva vyhradené.
         </div>
         <div class="bottom-links">
           <div class="language-switch">
